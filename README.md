@@ -9,6 +9,8 @@
 <p align="center">
 
 ![Repository Views](https://komarev.com/ghpvc/?username=qompassai-arch)
+![GitHub all releases](https://img.shields.io/github/downloads/qompassai/arch/total?style=flat-square)
+
   <a href="https://archlinux.org/">
   <img src="https://img.shields.io/badge/Arch_Linux-1793D1?style=for-the-badge&logo=arch-linux&logoColor=white" alt="Arch Linux">
 </a>
