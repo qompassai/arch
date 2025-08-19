@@ -12,7 +12,11 @@
   <summary style="padding: 8px; background: #475569; color: #fff; border-radius: 6px; font-family: monospace; cursor: pointer;">
     <span style="font-family: monospace;">Hyprland Graphics</span> | <em>Hyprland Graphics</em>
   </summary>
-[`default/hypr`](https://github.com/qompassai/arch/tree/main/omarchy/default/hypr) &mdash; Hyprland Graphics Config
+<details>
+  <summary>View Hyprland Graphics Config Directory</summary>
+  <a href="https://github.com/qompassai/arch/tree/main/omarchy/default/hypr">default/hypr</a>
+</details>
+
   </details>
 
 <p>
