@@ -2,6 +2,9 @@
 <!-- Qompass AI Omarchy Graphics README.md -->
 <!-- Copyright (C) 2025 Qompass AI, All rights reserved -->
 <!-- ---------------------------------------- -->
+<h1 style="font-size: 1.6em; font-weight: bold; padding: 14px; background: #334155; color: white; border-radius: 10px; margin: 10px 0;">
+  Omarchy Hyprland Debug and Graphics
+</h1>
 
   <details>
   <summary style="padding: 8px; background: #475569; color: #fff; border-radius: 6px; font-family: monospace; cursor: pointer;">
