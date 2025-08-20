@@ -8,6 +8,38 @@
 
   <details>
   <summary style="padding: 8px; background: #475569; color: #fff; border-radius: 6px; font-family: monospace; cursor: pointer;">
+    <span style="font-family: monospace;">Repo Orientation</em>
+  </summary>
+
+```sh
+# ~/.config/hypr/
+├── debug # debug folder per system
+│   ├── gtk_debug.conf # default off
+│   ├── intel_debug.conf # default off
+│   ├── mesa_debug.conf # default off
+│   ├── nvidia_debug.conf # default off
+│   ├── opengl_debug.conf # default off
+│   └── vulkan_debug.conf # default off
+├── debug.conf # default on - uncomment by system to debug
+├── graphics # graphics folder per system
+│   ├── angle.conf
+│   ├── gtk.conf
+│   ├── intel.conf
+│   ├── mesa.conf
+│   ├── nvidia.conf
+│   ├── unreal.conf
+│   ├── vulkan.conf
+│   └── x11.conf
+├── graphics.conf
+└── README.md
+
+3 directories, 17 files
+```
+
+</details>
+
+  <details>
+  <summary style="padding: 8px; background: #475569; color: #fff; border-radius: 6px; font-family: monospace; cursor: pointer;">
     <span style="font-family: monospace;">~/.config/hypr/debug.conf</span> | <em>Hyprland Debug Config</em>
   </summary>
 
