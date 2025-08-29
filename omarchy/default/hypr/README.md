@@ -43,7 +43,7 @@
 | [`HYPRLAND_NO_RT`](https://wiki.hyprland.org/Debugging/#hyprland_no_rt)              | Disables real-time thread priority for Hyprland.    | `export HYPRLAND_NO_RT=1`                          | [Hyprland Debugging][2]                          |
 | [`HYPRLAND_NO_SD_NOTIFY`](https://wiki.hyprland.org/Debugging/#hyprland_no_sd_notify)| Disables systemd notify integration.                | `export HYPRLAND_NO_SD_NOTIFY=1`                   | [Hyprland Debugging][2]                          |
 | [`HYPRLAND_NO_SD_VARS`](https://wiki.hyprland.org/Debugging/#hyprland_no_sd_vars)    | Prevents reading environment variables from systemd.| `export HYPRLAND_NO_SD_VARS=1`                     | [Hyprland Debugging][2]                          |
-| [`HYPRLAND_TRACE`](https://wiki.hyprland.org/Debugging/#hyprland_trace)              | Enables in-depth trace logging.                     | `export HYPRLAND_TRACE=1`                          | [Hyprland Debugging][2]                          |
+| [`HYPRLAND_TRACE`](https://wiki.hypr.land/Crashes-and-Bugs/)              | Enables in-depth trace logging.                     | `export HYPRLAND_TRACE=1`                          | [Hyprland Debugging][2]                          |
 | [`WAYLAND_DEBUG`](https://wayland.freedesktop.org/debug.html)                        | Enables Wayland protocol debug output.              | `WAYLAND_DEBUG=1 Hyprland`                         | [Wayland Debug][3]                               |
 
 [3]: https://wayland.freedesktop.org/debug.html
@@ -51,13 +51,13 @@
   </details>
 
   <details>
-    <summary>❓ <b>Debugging in Hyprland: Example Commands</b></summary>
+    <summary> <b>Debugging in Hyprland: Example Commands</b></summary>
+
 
 - **Start Hyprland with all debug/tracing enabled:**
 
 AQ_TRACE=1 HYPRLAND_TRACE=1 HYPRLAND_NO_RT=1 HYPRLAND_NO_SD_NOTIFY=1 HYPRLAND_NO_SD_VARS=1 WAYLAND_DEBUG=1 Hyprland > hyprland.log 2>&1
 
-text
 - **View colored logs in real-time (with `colored_stdout_logs=true`):**
 
 tail -f hyprland.log
@@ -68,6 +68,7 @@ tail -f hyprland.log
 <details>
   <summary>🚨 <b>Where to Find Crash and Log Reports</b></summary>
 
+
 - **STDOUT/STDERR Log:**  
 If you started Hyprland as above, logs are in `hyprland.log`.
 - **Systemd Journal:**  
@@ -75,7 +76,6 @@ If running as a service:
 
 journalctl --user -u hyprland -xe
 
-text
 - **Wayland Debug Log:**  
 Output is included inline with Hyprland logs if `WAYLAND_DEBUG=1`.
 
