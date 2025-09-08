@@ -55,7 +55,6 @@ DRM core helper module for DisplayPort, HDMI, and CEC handling. Provides fine-tu
 | **OS Support**     | Arch, Debian, NixOS *(Linux only)*                                    |
 | **Notes**          | Tuning can help with DisplayPort MST chains, EDID/CEC issues.       
 
-**Example modprobe.d usage:**
 
 /etc/modprobe.d/drm_display_helper.conf
 
@@ -63,7 +62,6 @@ options drm_display_helper dp_aux_i2c_transfer_size=16
 options drm_display_helper dp_aux_i2c_speed_khz=100
 options drm_display_helper drm_dp_cec_unregister_delay=3
 
-text
   </div>
 </details>
 
