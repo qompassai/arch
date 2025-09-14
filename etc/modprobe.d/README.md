@@ -3,7 +3,7 @@
 <!-- Copyright (C) 2025 Qompass AI, All rights reserved -->
 <!-- ---------------------------------------- -->
 
-<h1 align="center">Dynamic Kernel Module Support (DKMS)</h1>
+<h1 align="center">Dynamic Kernel Module Support (DKMS) Modprobe.d Config</h1>
 
   <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin-top: 10px; font-family: monospace;">
     <table>
