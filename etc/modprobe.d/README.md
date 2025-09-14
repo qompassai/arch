@@ -7,33 +7,66 @@
 
 <details>
   <summary style="font-size: 1.4em; font-weight: bold; padding: 15px; background: #667eea; color: white; border-radius: 10px; cursor: pointer; margin: 10px 0;">
-    <strong>DKMS Modules to configure</strong>
+    <strong>Modprobe.d Dynamic Kernel Module Support (DKMS) Overview</strong>
   </summary>
   <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin-top: 10px; font-family: monospace;">
-
-| Module               | Autoloaded | Package/Source           | mkinitcpio.conf | modprobe.d Parameters | modules-load.d | OS Support                                      | Notes                                                                 |
-|----------------------|:----------:|-------------------------|:---------------:|:---------------------:|:--------------:|:-----------------------------------------------:|------------------------------------------------------------------------|
-| acpi_thermal_rel     | Yes        | linux kernel            | Yes             | Yes                  | Yes            | Arch, Debian, NixOS (Linux only)                | ACPI thermal relationships for CPU/GPU cooling zones                  |
-| bluez modules        | Yes        | bluez (Bluetooth)       | Yes             | Yes                  | Yes            | Arch, Debian, NixOS (Linux only)                | Bluetooth stack kernel modules (HCI, RFCOMM, etc.)                    |
-| drm_display_helper   | Yes        | linux kernel            | Yes             | Yes (DP options)      | Yes            | Arch, Debian, NixOS (Linux only)                | DRM display helpers for DP/HDMI/CEC handling                          |
-| gpu_sched            | Yes        | linux kernel            | Yes             | Yes (`sched_policy`)  | Yes            | Arch, Debian, NixOS (Linux only)                | DRM GPU scheduler, controls job queue fairness                        |
-| hid modules          | Yes        | linux kernel            | Yes             | Yes                  | Yes            | Arch, Debian, NixOS, macOS, Windows             | HID input devices (keyboards, mice, special controllers)              |
-| i915                 | Yes        | linux kernel/mesa-drm/X | Yes             | Yes                  | Yes            | Arch, Debian, NixOS (Linux only)                | Intel integrated GPU driver (Gen graphics)                            |
-| intel_hid            | Yes        | linux kernel            | Yes             | Yes (`options`)       | Yes            | Arch, Debian, NixOS (Linux only)                | Intel hotkey and ACPI HID support                                     |
-| intel_qat            | Yes        | linux-qat/qat driver    | Yes             | Yes (`options`)       | Yes            | Arch, Debian, NixOS (Linux only; HW support req.)| Intel QuickAssist hardware (crypto/compression offload)               |
-| int3400_thermal      | Yes        | linux kernel            | Yes             | Yes                  | Yes            | Arch, Debian, NixOS (Linux only)                | Intel ACPI thermal zone driver                                        |
-| kvm                  | Yes        | linux kernel            | Yes             | Yes (many options)    | Yes            | Arch, Debian, NixOS (Linux only)                | Kernel-based Virtual Machine hypervisor core                          |
-| kvm_intel            | Yes        | linux kernel            | Yes             | Yes (`options`)       | Yes            | Arch, Debian, NixOS (Linux only)                | Intel-specific KVM acceleration (VT‑x, VMX)                           |
-| nvidia               | Yes        | nvidia-dkms/nvidia      | Yes             | Yes                  | Yes            | Arch, Debian (non-free), NixOS (Linux only)      | NVIDIA proprietary GPU driver                                         |
-| nvidia_drm           | Yes        | nvidia-dkms/nvidia      | Yes             | Yes                  | Yes            | Arch, Debian (non-free), NixOS (Linux only)      | NVIDIA Direct Rendering Manager kernel module                         |
-| nvidia_modeset       | Yes        | nvidia-dkms/nvidia      | Yes             | Yes                  | Yes            | Arch, Debian (non-free), NixOS (Linux only)      | NVIDIA kernel modesetting                                             |
-| nvidia_uvm           | Yes        | nvidia-dkms/nvidia      | Yes             | Yes                  | Yes            | Arch, Debian (non-free), NixOS (Linux only)      | NVIDIA Unified Memory Kernel module                                   |
-| snd_* (ALSA)         | Yes        | alsa-utils/linux kernel | Yes             | Yes                  | Yes            | Arch, Debian, NixOS (Linux only)                | Advanced Linux Sound Architecture audio modules                       |
-| vfio                 | Yes        | linux kernel            | Yes             | Yes                  | Yes            | Arch, Debian, NixOS (Linux only)                | Virtual Function I/O core framework                                   |
-| vfio_iommu_type1     | Yes        | linux kernel            | Yes             | Yes                  | Yes            | Arch, Debian, NixOS (Linux only)                | VFIO IOMMU driver for PCI passthrough                                 |
-| vfio_pci             | Yes        | linux kernel            | Yes             | Yes (`options`)       | Yes            | Arch, Debian, NixOS (Linux only)                | VFIO PCI driver for device passthrough                                |
-| xe                   | Yes        | linux kernel/mesa-drm   | Yes             | Yes                  | Yes            | Arch, Debian, NixOS (Linux only, Xe GPUs only)   | Next-gen Intel Xe series GPU driver                                   |
-
+    <table>
+      <thead>
+        <tr>
+          <th style="text-align:center;">Config File</th>
+          <th style="text-align:center;">Purpose</th>
+          <th style="text-align:center;">Modules</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>audio.conf</td>
+          <td>Vendor agnostic audio (pipewire, alsa)</td>
+          <td>snd_hda_intel, snd-usb-audio</td>
+        </tr>
+        <tr>
+          <td>blacklist.conf</td>
+          <td>Disable modules (advanced)</td>
+          <td>airspy, dvb_usb_rtl28xxu, hackrf, nouveau, r8169, rtw89*, rtw_*, rtl*, rtwcore</td>
+        </tr>
+        <tr>
+          <td>devices.conf</td>
+          <td>Device specifics (Thunderbolt, USB, HDMI, NVME)</td>
+          <td>dm_mod, loop, mmc_core, overlay, rtsx_pci, thunderbolt, zram</td>
+        </tr>
+        <tr>
+          <td>drm.conf</td>
+          <td>DRM display helpers, GPU scheduling, CEC/HDMI pipeline</td>
+          <td>drm_display_helper, gpu_sched</td>
+        </tr>
+        <tr>
+          <td>encrypt.conf</td>
+          <td>Cryptography/Encryption protocols</td>
+          <td>cryptodev, lkrg</td>
+        </tr>
+        <tr>
+          <td>intel.conf</td>
+          <td>Intel specifics</td>
+          <td>kvm, kvm_intel, snd_sof_intel_hda, soundwire*, vfio_pci, xe</td>
+        </tr>
+        <tr>
+          <td>network.conf</td>
+          <td>Ethernet, Wifi, Bluetooth</td>
+          <td>bluetooth, btusb, cfg80211, iwlwifi, mac80211, mlx4*, ib_*, ip_*, nf_conntrack, r8125, rfcomm, rtw89*, rtw89core, rtw89pci</td>
+        </tr>
+        <tr>
+          <td>nvidia.conf</td>
+          <td>NVIDIA specific</td>
+          <td>nvidia, nvidia_drm, nvidia_modeset, nvidia_uvm</td>
+        </tr>
+        <tr>
+          <td>video.conf</td>
+          <td>Video specific (v4l2loopback, uvc, blackmagic)</td>
+          <td>blackmagic, cec, uvcvideo, v4l2loopback, v4l2loopback_dc</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </details>
 
 <details>
@@ -124,93 +157,7 @@ rm_firmware_active                            | charp  | "active","inactive","st
 
 </details>
 
-phaedrus@primo ~/.G/Q/C/dkms (main)> modinfo nvidia
-filename:       /lib/modules/6.16.0-2-cachyos/updates/dkms/nvidia.ko.zst
-import_ns:      DMA_BUF
-alias:          char-major-195-*
-version:        580.65.06
-supported:      external
-license:        Dual MIT/GPL
-firmware:       nvidia/580.65.06/gsp_tu10x.bin
-firmware:       nvidia/580.65.06/gsp_ga10x.bin
-softdep:        pre: ecdh_generic,ecdsa_generic
-srcversion:     689C8CABEC9DC28FEFB0858
-alias:          pci:v000010DEd*sv*sd*bc06sc80i00*
-alias:          pci:v000010DEd*sv*sd*bc03sc02i00*
-alias:          pci:v000010DEd*sv*sd*bc03sc00i00*
-alias:          of:N*T*Cnvidia,tegra264-displayC*
-alias:          of:N*T*Cnvidia,tegra264-display
-alias:          of:N*T*Cnvidia,tegra234-displayC*
-alias:          of:N*T*Cnvidia,tegra234-display
-depends:
-name:           nvidia
-retpoline:      Y
-vermagic:       6.16.0-2-cachyos SMP preempt mod_unload
-sig_id:         PKCS#7
-signer:         DKMS module signing key
-sig_key:        34:DF:F1:24:5E:07:89:D7:70:2A:37:34:E8:9A:67:48:25:3B:DA:98
-sig_hashalgo:   sha512
-signature:      63:D5:B1:FE:FA:A8:60:F7:27:65:4B:0E:19:2C:FC:02:40:A3:FD:8E:
-                59:DB:86:53:AC:24:C0:95:1D:E1:E5:40:44:55:26:7A:B9:09:CC:70:
-                0F:15:E6:04:7B:CE:B4:EA:88:63:8A:88:66:7E:78:85:88:F4:BE:45:
-                39:E0:57:14:AB:37:68:72:2B:02:01:0B:7E:4E:36:8D:A9:14:99:9D:
-                33:9F:1C:99:93:C1:1E:29:9F:B2:42:F0:1E:3D:A8:F9:1F:01:1E:F7:
-                E7:E2:57:A7:70:C5:55:B8:3B:38:34:60:87:35:6A:42:2F:18:16:6D:
-                53:EF:83:E9:4A:C3:D4:26:62:F2:CE:E9:AC:BC:7B:20:90:B8:4D:47:
-                B3:AA:AF:DE:A8:19:BE:28:15:C1:4E:88:F1:56:EB:14:1B:07:96:A9:
-                23:6C:78:C2:38:B5:E9:C2:ED:7A:5E:08:B5:86:F4:FB:CF:FF:0B:19:
-                FB:A3:1E:82:FB:43:63:2C:D0:FD:D4:57:39:AB:46:EC:7C:21:83:83:
-                99:2F:62:E7:C4:29:75:9D:1D:CB:A1:CE:F2:84:37:70:54:6D:1C:B0:
-                E2:2B:70:38:EE:ED:E5:CD:C8:18:2D:5C:DA:6F:E7:AD:DA:E0:42:D1:
-                56:BB:C2:FF:69:97:F4:46:F3:91:E6:A0:37:B4:F9:F0
-parm:           NvSwitchRegDwords:NvSwitch regkey (charp)
-parm:           NvSwitchBlacklist:NvSwitchBlacklist=uuid[,uuid...] (charp)
-parm:           NVreg_ResmanDebugLevel:int
-parm:           NVreg_RmLogonRC:int
-parm:           NVreg_ModifyDeviceFiles:int
-parm:           NVreg_DeviceFileUID:int
-parm:           NVreg_DeviceFileGID:int
-parm:           NVreg_DeviceFileMode:int
-parm:           NVreg_InitializeSystemMemoryAllocations:int
-parm:           NVreg_UsePageAttributeTable:int                                                                                                                             
-parm:           NVreg_EnablePCIeGen3:int
-parm:           NVreg_EnableMSI:int
-parm:           NVreg_EnableStreamMemOPs:int
-parm:           NVreg_RestrictProfilingToAdminUsers:int
-parm:           NVreg_PreserveVideoMemoryAllocations:int
-parm:           NVreg_EnableS0ixPowerManagement:int
-parm:           NVreg_S0ixPowerManagementVideoMemoryThreshold:int
-parm:           NVreg_DynamicPowerManagement:int
-parm:           NVreg_DynamicPowerManagementVideoMemoryThreshold:int
-parm:           NVreg_EnableGpuFirmware:int
-parm:           NVreg_EnableGpuFirmwareLogs:int
-parm:           NVreg_OpenRmEnableUnsupportedGpus:int
-parm:           NVreg_EnableUserNUMAManagement:int
-parm:           NVreg_MemoryPoolSize:int
-parm:           NVreg_KMallocHeapMaxSize:int
-parm:           NVreg_VMallocHeapMaxSize:int
-parm:           NVreg_IgnoreMMIOCheck:int
-parm:           NVreg_NvLinkDisable:int
-parm:           NVreg_EnablePCIERelaxedOrderingMode:int
-parm:           NVreg_RegisterPCIDriver:int
-parm:           NVreg_RegisterPlatformDeviceDriver:int
-parm:           NVreg_EnableResizableBar:int
-parm:           NVreg_EnableDbgBreakpoint:int
-parm:           NVreg_EnableNonblockingOpen:int
-parm:           NVreg_CoherentGPUMemoryMode:charp
-parm:           NVreg_RegistryDwords:charp
-parm:           NVreg_RegistryDwordsPerDevice:charp
-parm:           NVreg_RmMsg:charp
-parm:           NVreg_GpuBlacklist:charp
-parm:           NVreg_TemporaryFilePath:charp
-parm:           NVreg_ExcludedGpus:charp
-parm:           NVreg_DmaRemapPeerMmio:int
-parm:           NVreg_RmNvlinkBandwidth:charp
-parm:           NVreg_RmNvlinkBandwidthLinkCount:int
-parm:           NVreg_ImexChannelCount:int
-parm:           NVreg_CreateImexChannel0:int
-parm:           NVreg_GrdmaPciTopoCheckOverride:int
-parm:           rm_firmware_active:charp
+
 
 </details>
 
