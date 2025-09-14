@@ -5,9 +5,6 @@
 
 <h1 align="center">Dynamic Kernel Module Support (DKMS)</h1>
 
-  <summary style="font-size: 1.4em; font-weight: bold; padding: 15px; background: #667eea; color: white; border-radius: 10px; cursor: pointer; margin: 10px 0;">
-    <strong>Modprobe.d Dynamic Kernel Module Support (DKMS) Overview</strong>
-  </summary>
   <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin-top: 10px; font-family: monospace;">
     <table>
       <thead>
@@ -35,7 +32,7 @@
         </tr>
         <tr>
           <td>drm.conf</td>
-          <td>DRM display helpers, GPU scheduling, CEC/HDMI pipeline</td>
+          <td>Digital Rights Management (DRM) for displays</td>
           <td>drm_display_helper, gpu_sched</td>
         </tr>
         <tr>
@@ -46,12 +43,12 @@
         <tr>
           <td>intel.conf</td>
           <td>Intel specifics</td>
-          <td>kvm, kvm_intel, snd_sof_intel_hda, soundwire*, vfio_pci, xe</td>
+          <td>i915, kvm, kvm_intel, snd_sof_intel_hda, soundwire*, vfio_pci, xe</td>
         </tr>
         <tr>
           <td>network.conf</td>
           <td>Ethernet, Wifi, Bluetooth</td>
-          <td>bluetooth, btusb, cfg80211, iwlwifi, mac80211, mlx4*, ib_*, ip_*, nf_conntrack, r8125, rfcomm, rtw89*, rtw89core, rtw89pci</td>
+          <td>bluetooth, btusb, cfg80211, iwlwifi, mac80211, mlx4_(core, en, ib), ib_(ipoib, iser, isert, srp, srpt, set, qib), ip_(ipoib, set), nf_conntrack, r8125, rfcomm, rtw89core_git, rtw89pci_git, rtw89_usb_git</td>
         </tr>
         <tr>
           <td>nvidia.conf</td>
