@@ -1,0 +1,22 @@
+[Trigger]
+Type = Path
+Operation = Install
+Operation = Upgrade
+Target = usr/lib/modules/*/vmlinuz
+
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = mkinitcpio
+Target = mkinitcpio-git
+Target = eos-systemd-boot
+Target = amd-ucode
+Target = intel-ucode
+Target = linux-firmware
+
+[Action]
+Description = Installing mkinitcpio presets...
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/kernel-install-mkinitcpio-install
+NeedsTargets
