@@ -5,6 +5,51 @@
 
 <h1 align="center">Dynamic Kernel Module Support (DKMS) Modprobe.d Config</h1>
 
+<div align="center" style="margin-top: 16px;">
+
+  <a href="https://wiki.archlinux.org/title/Kernel_module">
+    Kernel modules (ArchWiki)
+  </a> ·
+
+  <a href="https://wiki.archlinux.org/title/Sound_system">
+    Audio / sound system
+  </a> ·
+
+  <a href="https://wiki.archlinux.org/title/Kernel_module#Blacklisting">
+    Blacklisting modules
+  </a> ·
+
+  <a href="https://wiki.archlinux.org/title/Thunderbolt">
+    Thunderbolt devices
+  </a> ·
+
+  <a href="https://wiki.archlinux.org/title/Intel_graphics">
+    Intel graphics
+  </a> ·
+
+  <a href="https://wiki.archlinux.org/title/Network_configuration">
+    Network configuration
+  </a> ·
+
+  <a href="https://wiki.archlinux.org/title/NVIDIA">
+    NVIDIA drivers
+  </a> ·
+
+  <a href="https://wiki.archlinux.org/title/Webcam_setup">
+    Webcam / v4l2loopback
+  </a>
+
+  <div align="center" style="margin-top: 10px;">
+  <a href="https://github.com/qompassai/dotfiles/blob/main/.config/dkms/dkms.sh">
+    <img
+      src="https://img.shields.io/badge/DKMS%20Script-dotfiles-0A0A0A?style=for-the-badge&logo=gnu-bash&logoColor=white"
+      alt="DKMS Dotfile Script"
+      title="DKMS modules script ($XDG_CONFIG_HOME/dkms/dkms.sh)"
+    />
+  </a>
+</div>
+
+</div>
   <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin-top: 10px; font-family: monospace;">
     <table>
       <thead>
