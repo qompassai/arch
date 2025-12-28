@@ -3,7 +3,6 @@
 # Qompass AI Draft Omarchy Hardening PR
 # Copyright (C) 2025 Qompass AI, All rights reserved
 #####################################################
-#!/usr/bin/env bash
 set -euo pipefail
 hardening_pkgs=(
   age
@@ -48,7 +47,7 @@ if lspci | grep -qi nvidia; then
   export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
   export XDG_STATE_HOME="${XDG_STATE_HOME:-$HOME/.local/state}"
   mkdir -p "$XDG_CONFIG_HOME/nvidia-container-toolkit"
-  cat >"$XDG_CONFIG_HOME/nvidia-container-toolkit/config.toml" <<'EOCONTAINER'
+  cat > "$XDG_CONFIG_HOME/nvidia-container-toolkit/config.toml" << 'EOCONTAINER'
 accept-nvidia-visible-devices-as-volume-mounts = false
 accept-nvidia-visible-devices-envvar-when-unprivileged = true
 disable-require = false
@@ -101,12 +100,12 @@ export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 
 dockerd-rootless-setuptool.sh install || true
 systemctl --user enable --now docker.service
-loginctl enable-linger "$USER" 2>/dev/null || true
+loginctl enable-linger "$USER" 2> /dev/null || true
 
 echo
 echo '==> Writing ~/.config/docker/config.jsonc...'
 mkdir -p "$XDG_CONFIG_HOME/docker"
-cat >"$XDG_CONFIG_HOME/docker/config.jsonc" <<'EOCONFIG'
+cat > "$XDG_CONFIG_HOME/docker/config.jsonc" << 'EOCONFIG'
 {
 // Reference: [https://docs.docker.com/reference/cli/docker/](https://docs.docker.com/reference/cli/docker/)
   "auths": {
@@ -140,7 +139,7 @@ EOCONFIG
 
 echo
 echo '==> Writing Rootless Docker Configs'
-cat >"$XDG_CONFIG_HOME/docker/daemon.jsonc" <<'EODAEMON'
+cat > "$XDG_CONFIG_HOME/docker/daemon.jsonc" << 'EODAEMON'
 {
 // References: [https://docs.docker.com/engine/daemon/](https://docs.docker.com/engine/daemon/) | [https://docs.docker.com/reference/cli/dockerd/](https://docs.docker.com/reference/cli/dockerd/)
   "allow-direct-routing": false,
@@ -215,7 +214,7 @@ echo '==> Creating Userspace Gnu Privacy Guard (Gnupg) S/MIME, Dirmngr, Agent, a
 mkdir -p "$HOME/.gnupg"
 chmod 700 "$HOME/.gnupg"
 echo
-cat >"$HOME/.gnupg/gpg.conf" <<'EOGPGCONF'
+cat > "$HOME/.gnupg/gpg.conf" << 'EOGPGCONF'
 allow-old-cipher-algos
 allow-weak-digest-algos
 allow-weak-key-signatures
@@ -268,7 +267,7 @@ EOGPGCONF
 chmod 600 "$HOME/.gnupg/gpg.conf"
 echo
 echo '==> Writing ~/.gnupg/gpg-agent.conf...'
-cat >"$HOME/.gnupg/gpg-agent.conf" <<'EOGPGAGENT'
+cat > "$HOME/.gnupg/gpg-agent.conf" << 'EOGPGAGENT'
 allow-loopback-pinentry
 allow-preset-passphrase
 debug-level guru
@@ -293,7 +292,7 @@ EOGPGAGENT
 chmod 600 "$HOME/.gnupg/gpg-agent.conf"
 echo
 echo '==> Writing ~/.gnupg/gpgsm.conf...'
-cat >"$HOME/.gnupg/gpgsm.conf" <<'EOGPGSM'
+cat > "$HOME/.gnupg/gpgsm.conf" << 'EOGPGSM'
 agent-program /usr/bin/gpg-agent
 armor
 auto-issuer-key-retrieve
@@ -312,12 +311,12 @@ verbose
 EOGPGSM
 chmod 600 "$HOME/.gnupg/gpgsm.conf"
 echo
-cat >"$HOME/.gnupg/common.conf" <<'EOCOMMON'
+cat > "$HOME/.gnupg/common.conf" << 'EOCOMMON'
 use-keyboxd
 EOCOMMON
 chmod 600 "$HOME/.gnupg/common.conf"
 echo
-cat >"$HOME/.gnupg/dirmngr.conf" <<'EODIRMNGR'
+cat > "$HOME/.gnupg/dirmngr.conf" << 'EODIRMNGR'
 allow-ocsp
 connect-timeout 30
 debug-level advanced
