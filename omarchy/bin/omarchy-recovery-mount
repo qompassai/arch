@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+# omarchy-recovery-mount
+# Qompass AI Omarchy Arch-Chroot Tool
+# Copyright (C) 2026 Qompass AI, All rights reserved
+# ----------------------------------------
+# written for issue 2809- https://github.com/basecamp/omarchy/issues/2809
+set -euo pipefail
+ROOT_MAPPER_NAME="crypt-drive"
+MNT_ROOT="/mnt"
+BOOT_PART="/mnt/boot"               
+ROOT_PART="${1:-}"
+if [[ -z "$ROOT_PART" ]]; then
+  ROOT_PART=$(lsblk -rno NAME,FSTYPE /dev/disk/by-partuuid/* 2>/dev/null \
+    | awk '$2 == "btrfs" {print "/dev/"$1; exit}')
+  if [[ -z "$ROOT_PART" ]]; then
+    echo "Usage: sudo $0 /dev/nvme0n1p2" >&2
+    exit 1
+  fi
+fi
+if [[ ! -e "/dev/mapper/${ROOT_MAPPER_NAME}" ]]; then
+  sudo cryptsetup open "$ROOT_PART" "$ROOT_MAPPER_NAME"
+fi
+MAPPER_DEV="/dev/mapper/${ROOT_MAPPER_NAME}"
+# Mount main subvolumes
+sudo mkdir -p "${MNT_ROOT}"
+sudo mount -o subvol=@ "${MAPPER_DEV}" "${MNT_ROOT}"
+sudo mkdir -p "${MNT_ROOT}/home"
+sudo mount -o subvol=@home "${MAPPER_DEV}" "${MNT_ROOT}/home"
+sudo mkdir -p "${MNT_ROOT}/var/log"
+sudo mount -o subvol=@log "${MAPPER_DEV}" "${MNT_ROOT}/var/log"
+sudo mkdir -p "${MNT_ROOT}/var/cache/pacman/pkg"
+sudo mount -o subvol=@pkg "${MAPPER_DEV}" "${MNT_ROOT}/var/cache/pacman/pkg"
+sudo mkdir -p "${MNT_ROOT}/.snapshots"
+sudo mount -o subvol=@.snapshots "${MAPPER_DEV}" "${MNT_ROOT}/.snapshots"
+# Optional /boot
+if [[ -n "${BOOT_PART}" ]]; then
+  sudo mkdir -p "${MNT_ROOT}/boot"
+  sudo mount "${BOOT_PART}" "${MNT_ROOT}/boot"
+fi
+for d in dev proc sys run; do
+  sudo mkdir -p "${MNT_ROOT}/${d}"
+  if ! mountpoint -q "${MNT_ROOT}/${d}"; then
+    sudo mount --bind "/${d}" "${MNT_ROOT}/${d}"
+  fi
+done
+sudo arch-chroot "${MNT_ROOT}"
