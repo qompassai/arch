@@ -29,7 +29,8 @@
 ## NVIDIA / GPU configuration
 
 - **Scripts**
-  - [`install/first-run/audio.sh`](install/first-run/audio.sh)
+  - [`install/first-run/modules.sh`](install/first-run/modules.sh)
+    - [`install/first-run/modprobe.sh`](install/first-run/modprobe.sh)
   - [`install/config/hardware/nvidia.sh`](install/config/hardware/nvidia.sh)
 
 - **Related issues**
