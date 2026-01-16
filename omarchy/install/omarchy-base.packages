@@ -41,13 +41,17 @@ github-cli
 gnome-calculator
 gnome-keyring
 gnome-themes-extra
+gnupg #
 grim
 gpu-screen-recorder
 gum
 gvfs-mtp
 gvfs-nfs
 gvfs-smb
+hyprcursor #
+hyprgraphics #
 hypridle
+hyprlang #
 hyprland
 hyprland-guiutils
 hyprland-preview-share-picker

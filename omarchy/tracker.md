@@ -2,47 +2,93 @@
 <!-- Qompass AI Omarchy PR Tracker -->
 <!-- Copyright (C) 2026 Qompass AI, All rights reserved -->
 <!-- ---------------------------------------- -->
+## Key
+- **I#** = Issue
+- **F#** = Fix
+- **C#** = Cause
+- **T#** = Test
 
-## Audio configuration
+## Media
+I1 – #3930: Glitching first frame on captured videos <https://github.com/basecamp/omarchy/issues/3930> [conversation_history:1]
+  C1 –
+  F1 – [`install/first-run/audio.sh`](install/first-run/audio.sh) [conversation_history:1]
 
-- **Scripts**
-  - [`install/first-run/audio.sh`](install/first-run/audio.sh)
-  - [`install/config/hardware/audio.sh`](install/config/hardware/audio.sh)
+I2 – #4097: No output to select entire screen in portal share picker <https://github.com/basecamp/omarchy/issues/4097> [conversation_history:1]
+  C1 –
+  F1 – [`install/config/hardware/audio.sh`](install/config/hardware/audio.sh) [conversation_history:1]
 
-- **Related issues**
-  - #4097 <https://github.com/basecamp/omarchy/issues/4097>
-  - #4242 <https://github.com/basecamp/omarchy/issues/4242>
-  - #4070 <https://github.com/basecamp/omarchy/issues/4070>
+I3 – #4242: System UI/Screen freezes on video playback after updating to latest version <https://github.com/basecamp/omarchy/issues/4242> [conversation_history:1]
+  C1 –
+  F1 –
+
+I4 – #4070: Cannot record audio via built in stereo microphone <https://github.com/basecamp/omarchy/issues/4070> [conversation_history:1]
+  C1 –
+  F1 –
 
 ---
 
-## Recovery mount
-
-- **Script**
-  - [`bin/omarchy-recovery-mount`](bin/omarchy-recovery-mount)
-
-- **Related issues**
-  - #2905 <https://github.com/basecamp/omarchy/issues/4097>
+## Recovery
+I5 – #2905: Recovery script / omarchy-recovery-mount <https://github.com/basecamp/omarchy/issues/4097> [conversation_history:1]
+  C1 –
+  F1 – [`bin/omarchy-recovery-mount`](bin/omarchy-recovery-mount) [conversation_history:1]
 
 ---
 
 ## NVIDIA / GPU configuration
+I6 – #4200: NVIDIA / GPU configuration issue <https://github.com/basecamp/omarchy/issues/4200> [conversation_history:1]
+  C1 –
+  F1 –
+    - [`install/first-run/modules.sh`](install/first-run/modules.sh) [conversation_history:1]
+    - [`install/first-run/modprobe.sh`](install/first-run/modprobe.sh) [conversation_history:1]
+    - [`install/config/hardware/nvidia.sh`](install/config/hardware/nvidia.sh) [conversation_history:1]
 
-- **Scripts**
-  - [`install/first-run/modules.sh`](install/first-run/modules.sh)
-    - [`install/first-run/modprobe.sh`](install/first-run/modprobe.sh)
-  - [`install/config/hardware/nvidia.sh`](install/config/hardware/nvidia.sh)
+I7 – #2501: NVIDIA / GPU configuration issue <https://github.com/basecamp/omarchy/issues/2501>
+  C1 –
+  F1 –
 
-- **Related issues**
-  - #4200 <https://github.com/basecamp/omarchy/issues/4200>
-  - #2501 <https://github.com/basecamp/omarchy/issues/2501>
+I8 – #4056: Hard System Freeze on Nvidia [RTX 2060]: "i2c timeout" errors & "perf interrupt took too long" <https://github.com/basecamp/omarchy/issues/4056>
+  C1 –
+  F1 –
+
+I9 – #4267: Switching to nvidia-open has caused some problems <https://github.com/basecamp/omarchy/issues/4267>
+  C9 –
+  F9 –
 
 ---
 
-## Chromium GPU / Ozone errors (3.2.3)
+## Browser
+I10 – #3899: Chromium GPU/Ozone errors after update to 3.2.3 <https://github.com/basecamp/omarchy/issues/3899>
+  C1 –
+  F1 –
 
-- **Issue**
-  - Chromium GPU/Ozone errors after update to 3.2.3  
-    #3899 <https://github.com/basecamp/omarchy/issues/3899>
+I11 – #4242: System UI/Screen freezes on video playback after updating to version <https://github.com/basecamp/omarchy/issues/4242> [conversation_history:1]
+  C1 –
+  F1 –
 
-- **Related issues**
+---
+
+## Hardening
+I12 – #3899: Chromium GPU/Ozone errors after update to 3.2.3 <https://github.com/basecamp/omarchy/issues/3899> [conversation_history:1]
+  C1 –
+  F1 –
+
+---
+
+## Docker
+I13 – #3899: Chromium GPU/Ozone errors after update to 3.2.3 <https://github.com/basecamp/omarchy/issues/3899> [conversation_history:1]
+  C1 –
+  F1 –
+
+---
+
+## Wayland
+I14 – #4271: Wayland layer surfaces allocate VRAM even when not visible <https://github.com/basecamp/omarchy/issues/4271> [conversation_history:1]
+  C1 –
+  F1 –
+
+---
+
+## Neovim
+I15 – #3878: Neovim transparency.lua file breaks checkhealth Snacks section <https://github.com/basecamp/omarchy/issues/3878> [conversation_history:1]
+  C1 –
+  F1 –
