@@ -2,20 +2,22 @@
 <!-- Qompass AI Omarchy PR Tracker -->
 <!-- Copyright (C) 2026 Qompass AI, All rights reserved -->
 <!-- ---------------------------------------- -->
-## Key
+## Legend
 - **I#** = Issue
 - **F#** = Fix
 - **C#** = Cause
+* D# = Diff
+* E# = Enhancement
 - **T#** = Test
 
 ## Media
 I1 – #3930: Glitching first frame on captured videos <https://github.com/basecamp/omarchy/issues/3930> 
   C1 –
-  F1 – [`install/first-run/audio.sh`](install/first-run/audio.sh) [conversation_history:1]
+  F1 – [`install/first-run/audio.sh`](install/first-run/audio.sh)
 
 I2 – #4097: No output to select entire screen in portal share picker <https://github.com/basecamp/omarchy/issues/4097>
   C1 –
-  F1 – [`install/config/hardware/audio.sh`](install/config/hardware/audio.sh) [conversation_history:1]
+  F1 – [`install/config/hardware/audio.sh`](install/config/hardware/audio.sh)
 
 I3 – #4242: System UI/Screen freezes on video playback after updating to latest version <https://github.com/basecamp/omarchy/issues/4242> 
   C1 –
@@ -32,15 +34,17 @@ I5 – #2905: Recovery script / omarchy-recovery-mount <https://github.com/basec
   C1 –
   F1 – [`bin/omarchy-recovery-mount`](bin/omarchy-recovery-mount)
 
+  E1- fix-pacman-permissions
+
 ---
 
 ## NVIDIA / GPU configuration
 I6 – #4200: NVIDIA / GPU configuration issue <https://github.com/basecamp/omarchy/issues/4200>
   C1 –
   F1 –
-    - [`install/first-run/modules.sh`](install/first-run/modules.sh) [conversation_history:1]
-    - [`install/first-run/modprobe.sh`](install/first-run/modprobe.sh) [conversation_history:1]
-    - [`install/config/hardware/nvidia.sh`](install/config/hardware/nvidia.sh) [conversation_history:1]
+    - [`install/first-run/modules.sh`](install/first-run/modules.sh)
+    - [`install/first-run/modprobe.sh`](install/first-run/modprobe.sh)
+    - [`install/config/hardware/nvidia.sh`](install/config/hardware/nvidia.sh)
 
 I7 – #2501: NVIDIA / GPU configuration issue <https://github.com/basecamp/omarchy/issues/2501>
   C1 –
