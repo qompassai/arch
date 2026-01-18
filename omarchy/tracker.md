@@ -9,33 +9,33 @@
 - **T#** = Test
 
 ## Media
-I1 – #3930: Glitching first frame on captured videos <https://github.com/basecamp/omarchy/issues/3930> [conversation_history:1]
+I1 – #3930: Glitching first frame on captured videos <https://github.com/basecamp/omarchy/issues/3930> 
   C1 –
   F1 – [`install/first-run/audio.sh`](install/first-run/audio.sh) [conversation_history:1]
 
-I2 – #4097: No output to select entire screen in portal share picker <https://github.com/basecamp/omarchy/issues/4097> [conversation_history:1]
+I2 – #4097: No output to select entire screen in portal share picker <https://github.com/basecamp/omarchy/issues/4097>
   C1 –
   F1 – [`install/config/hardware/audio.sh`](install/config/hardware/audio.sh) [conversation_history:1]
 
-I3 – #4242: System UI/Screen freezes on video playback after updating to latest version <https://github.com/basecamp/omarchy/issues/4242> [conversation_history:1]
+I3 – #4242: System UI/Screen freezes on video playback after updating to latest version <https://github.com/basecamp/omarchy/issues/4242> 
   C1 –
   F1 –
 
-I4 – #4070: Cannot record audio via built in stereo microphone <https://github.com/basecamp/omarchy/issues/4070> [conversation_history:1]
+I4 – #4070: Cannot record audio via built in stereo microphone <https://github.com/basecamp/omarchy/issues/4070>
   C1 –
   F1 –
 
 ---
 
 ## Recovery
-I5 – #2905: Recovery script / omarchy-recovery-mount <https://github.com/basecamp/omarchy/issues/4097> [conversation_history:1]
+I5 – #2905: Recovery script / omarchy-recovery-mount <https://github.com/basecamp/omarchy/issues/4097>
   C1 –
-  F1 – [`bin/omarchy-recovery-mount`](bin/omarchy-recovery-mount) [conversation_history:1]
+  F1 – [`bin/omarchy-recovery-mount`](bin/omarchy-recovery-mount)
 
 ---
 
 ## NVIDIA / GPU configuration
-I6 – #4200: NVIDIA / GPU configuration issue <https://github.com/basecamp/omarchy/issues/4200> [conversation_history:1]
+I6 – #4200: NVIDIA / GPU configuration issue <https://github.com/basecamp/omarchy/issues/4200>
   C1 –
   F1 –
     - [`install/first-run/modules.sh`](install/first-run/modules.sh) [conversation_history:1]
@@ -61,34 +61,34 @@ I10 – #3899: Chromium GPU/Ozone errors after update to 3.2.3 <https://github.c
   C1 –
   F1 –
 
-I11 – #4242: System UI/Screen freezes on video playback after updating to version <https://github.com/basecamp/omarchy/issues/4242> [conversation_history:1]
+I11 – #4242: System UI/Screen freezes on video playback after updating to version <https://github.com/basecamp/omarchy/issues/4242> 
   C1 –
   F1 –
 
 ---
 
 ## Hardening
-I12 – #3899: Chromium GPU/Ozone errors after update to 3.2.3 <https://github.com/basecamp/omarchy/issues/3899> [conversation_history:1]
+I12 – #3899:
   C1 –
   F1 –
 
 ---
 
 ## Docker
-I13 – #3899: Chromium GPU/Ozone errors after update to 3.2.3 <https://github.com/basecamp/omarchy/issues/3899> [conversation_history:1]
-  C1 –
+I13 – 
+  C1 – start browser after vm starts with http://127.0.0.1:8006
   F1 –
 
 ---
 
 ## Wayland
-I14 – #4271: Wayland layer surfaces allocate VRAM even when not visible <https://github.com/basecamp/omarchy/issues/4271> [conversation_history:1]
+I14 – #4271: Wayland layer surfaces allocate VRAM even when not visible <https://github.com/basecamp/omarchy/issues/4271>
   C1 –
   F1 –
 
 ---
 
 ## Neovim
-I15 – #3878: Neovim transparency.lua file breaks checkhealth Snacks section <https://github.com/basecamp/omarchy/issues/3878> [conversation_history:1]
+I15 – #3878: Neovim transparency.lua file breaks checkhealth Snacks section <https://github.com/basecamp/omarchy/issues/3878> 
   C1 –
   F1 –
