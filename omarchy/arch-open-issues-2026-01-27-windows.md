@@ -1,6 +1,6 @@
 # Open issues for qompassai/arch
 
-_Filtered by search keyword: `docker`_
+_Filtered by search keyword: `windows`_
 
 ## Summary (newest first)
 
