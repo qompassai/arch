@@ -2,6 +2,9 @@
 # test-portals.sh
 # Qompass AI – XDG Desktop Portal test helper
 set -euo pipefail
+busctl --user call org.freedesktop.portal.Desktop \
+    /org/freedesktop/portal/desktop \
+    org.freedesktop.DBus.Introspectable Introspect
 PORTAL_CONF="${XDG_CONFIG_HOME:-$HOME/.config}/xdg-desktop-portal/portals.conf"
 echo "Using portals.conf: $PORTAL_CONF"
 echo

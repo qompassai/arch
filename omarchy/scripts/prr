@@ -1,0 +1,231 @@
+#!/usr/bin/env bash
+# Enhanced PR Review List Generator
+# Save as: ~/bin/pr-review-enhanced
+PR_BRANCH="${1:-pr-3454}"
+BASE_BRANCH="${2:-master}"
+OUTPUT="pr-${PR_BRANCH}-enhanced-review.txt"
+
+{
+# Header
+cat << 'EOF'
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                       PR #3454 Enhanced Review Document                      ║
+║                     Generated for RTX 4070 Development Setup                 ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+LEGEND:
+  [+]  NEW FILE      - Brand new file added in this PR
+  [~]  MODIFIED      - Existing file with changes
+  [-]  DELETED       - File removed in this PR
+  [→]  RENAMED       - File moved or renamed
+
+PRIORITY MARKERS:
+  🔥 HIGH    - GPU passthrough, NVIDIA config, core system scripts
+  ⚡ MEDIUM  - Hyprland config, theme system, installation scripts
+  📦 LOW     - Theme files, migrations, minor utilities
+
+STATISTICS:
+  Lines: +added / -removed / total_changed
+
+═══════════════════════════════════════════════════════════════════════════════
+
+EOF
+
+# Summary Statistics
+echo "SUMMARY:"
+git diff --shortstat $BASE_BRANCH..$PR_BRANCH | sed 's/^/ /'
+echo
+git diff --name-status $BASE_BRANCH..$PR_BRANCH | cut -f1 | sort | uniq -c | \
+  awk '{
+    if ($2=="A") icon="[+] NEW FILES";
+    else if ($2=="M") icon="[~] MODIFIED ";
+    else if ($2=="D") icon="[-] DELETED  ";
+    else if ($2~/^R/) icon="[→] RENAMED  ";
+    else icon="[?] OTHER    ";
+    printf " %s: %3d\n", icon, $1
+  }'
+echo
+echo "═══════════════════════════════════════════════════════════════════════════════"
+echo
+
+# Process files with detailed info
+echo "DETAILED FILE LIST:"
+echo
+
+git diff --numstat $BASE_BRANCH..$PR_BRANCH | while IFS=$'\t' read added removed file; do
+  # Handle binary files or empty values
+  if [[ $added == "-" || -z $added ]]; then
+    added=0
+  fi
+  if [[ $removed == "-" || -z $removed ]]; then
+    removed=0
+  fi
+
+  # Get change status
+  status=$(git diff --name-status $BASE_BRANCH..$PR_BRANCH -- "$file" 2>/dev/null | cut -f1)
+
+  # Handle renames
+  if [[ $status =~ ^R ]]; then
+    old_file=$(git diff --name-status $BASE_BRANCH..$PR_BRANCH | grep "$file" | cut -f2)
+    file_display="$old_file → $file"
+  else
+    file_display="$file"
+  fi
+
+  # Determine status icon
+  if [[ $status == "A" ]]; then
+    status_icon="[+]"
+    status_text="NEW"
+  elif [[ $status == "M" ]]; then
+    status_icon="[~]"
+    status_text="MOD"
+  elif [[ $status == "D" ]]; then
+    status_icon="[-]"
+    status_text="DEL"
+  elif [[ $status =~ ^R ]]; then
+    status_icon="[→]"
+    status_text="REN"
+  else
+    status_icon="[?]"
+    status_text="???"
+  fi
+
+  # Determine priority based on file path/name
+  priority=""
+  if [[ $file =~ (gpu-passthrough|nvidia|looking-glass) ]]; then
+    priority="🔥 HIGH  "
+  elif [[ $file =~ ^bin/omarchy-windows-vm ]]; then
+    priority="🔥 HIGH  "
+  elif [[ $file =~ (hyprland|hypr/|install/|config/hardware) ]]; then
+    priority="⚡ MEDIUM"
+  elif [[ $file =~ ^themes/ ]]; then
+    priority="📦 LOW   "
+  elif [[ $file =~ (migration|colors.toml) ]]; then
+    priority="📦 LOW   "
+  else
+    priority="⚡ MEDIUM"
+  fi
+
+  # Calculate total changes (safely)
+  if [[ $added == "0" && $removed == "0" ]]; then
+    line_info="(binary)        "
+    total=0
+  else
+    total=$((added + removed))
+    line_info=$(printf "+%-4s -%-4s (%-4s)" "$added" "$removed" "$total")
+  fi
+
+  # Determine category
+  category=""
+  if [[ $file =~ ^bin/omarchy-gpu ]]; then
+    category="[GPU-PASSTHROUGH]"
+  elif [[ $file =~ ^bin/omarchy-looking ]]; then
+    category="[LOOKING-GLASS]  "
+  elif [[ $file =~ ^bin/omarchy-windows ]]; then
+    category="[WINDOWS-VM]     "
+  elif [[ $file =~ ^bin/omarchy-theme ]]; then
+    category="[THEME-SYSTEM]   "
+  elif [[ $file =~ ^bin/omarchy- ]]; then
+    category="[UTILITY]        "
+  elif [[ $file =~ ^themes/ ]]; then
+    category="[THEME-FILE]     "
+  elif [[ $file =~ ^install/config/hardware/nvidia ]]; then
+    category="[NVIDIA-CONFIG]  "
+  elif [[ $file =~ ^install/ ]]; then
+    category="[INSTALL]        "
+  elif [[ $file =~ ^config/hypr ]]; then
+    category="[HYPRLAND]       "
+  elif [[ $file =~ ^config/ ]]; then
+    category="[CONFIG]         "
+  elif [[ $file =~ ^default/ ]]; then
+    category="[DEFAULT]        "
+  elif [[ $file =~ ^migrations/ ]]; then
+    category="[MIGRATION]      "
+  else
+    category="[OTHER]          "
+  fi
+
+  # Print formatted line
+  printf "%s %s %s %s %s %s\n" \
+    "$status_icon" \
+    "$priority" \
+    "$category" \
+    "$line_info" \
+    "$status_text" \
+    "$file_display"
+done | sort -k2,2r -k3,3
+
+echo
+echo "═══════════════════════════════════════════════════════════════════════════════"
+echo
+echo "HIGH PRIORITY FILES FOR RTX 4070 SETUP:"
+echo
+
+# List high priority GPU-related files with descriptions
+git diff --name-only $BASE_BRANCH..$PR_BRANCH | grep -E "(gpu-passthrough|nvidia|looking-glass|windows-vm)" | while read file; do
+  numstat=$(git diff --numstat $BASE_BRANCH..$PR_BRANCH -- "$file" | awk '{
+    if ($1 == "-") $1 = "0";
+    if ($2 == "-") $2 = "0";
+    print "+", $1, "/-", $2
+  }')
+
+  case $(basename "$file") in
+    *gpu-passthrough-setup*)
+      desc="GPU passthrough initial setup script"
+      ;;
+    *gpu-passthrough-bind*)
+      desc="Binds GPU to VFIO for passthrough"
+      ;;
+    *gpu-passthrough-info*)
+      desc="Displays GPU passthrough information"
+      ;;
+    *gpu-passthrough-utils*)
+      desc="GPU passthrough utility functions"
+      ;;
+    *gpu-passthrough)
+      desc="Main GPU passthrough orchestrator"
+      ;;
+    *looking-glass-install*)
+      desc="Installs Looking Glass for low-latency VM display"
+      ;;
+    *looking-glass-launch*)
+      desc="Launches Looking Glass client"
+      ;;
+    *windows-vm*)
+      desc="Main Windows VM management script"
+      ;;
+    nvidia.sh)
+      desc="NVIDIA driver configuration updates"
+      ;;
+    *)
+      desc="GPU-related configuration"
+      ;;
+  esac
+
+  printf "  🎯 %-40s %s %s\n" "$(basename "$file")" "$numstat" "- $desc"
+done
+
+echo
+echo "═══════════════════════════════════════════════════════════════════════════════"
+echo
+echo "REVIEW COMMANDS:"
+echo "  # View specific file changes"
+echo "  git diff $BASE_BRANCH..$PR_BRANCH -- <filename>"
+echo
+echo "  # View high priority GPU files"
+echo "  git diff $BASE_BRANCH..$PR_BRANCH -- bin/omarchy-gpu-passthrough*"
+echo
+echo "  # Interactive review"
+echo "  tig $BASE_BRANCH..$PR_BRANCH"
+echo
+echo "  # Review by category"
+echo "  git diff --stat $BASE_BRANCH..$PR_BRANCH -- bin/"
+echo "  git diff --stat $BASE_BRANCH..$PR_BRANCH -- themes/"
+echo "  git diff --stat $BASE_BRANCH..$PR_BRANCH -- install/"
+echo
+
+} > "$OUTPUT"
+
+echo "✅ Enhanced review list created: $OUTPUT"
+echo "📖 View with: less -R $OUTPUT"
+echo "📝 Edit with: nvim $OUTPUT"

@@ -1,0 +1,447 @@
+
+LEGEND:
+  [+]  NEW FILE      - Brand new file added in this PR
+  [~]  MODIFIED      - Existing file with changes
+  [-]  DELETED       - File removed in this PR
+  [→]  RENAMED       - File moved or renamed
+
+PRIORITY MARKERS:
+  🔥 HIGH    - GPU passthrough, NVIDIA config, core system scripts
+  ⚡ MEDIUM  - Hyprland config, theme system, installation scripts
+  📦 LOW     - Theme files, migrations, minor utilities
+
+STATISTICS:
+  Lines: +added / -removed / total_changed
+
+═══════════════════════════════════════════════════════════════════════════════
+
+SUMMARY:
+  384 files changed, 16990 insertions(+), 3105 deletions(-)
+
+ [+] NEW FILES: 161
+ [-] DELETED  :  75
+ [~] MODIFIED : 144
+ [→] RENAMED  :   1
+ [→] RENAMED  :   1
+ [→] RENAMED  :   2
+
+═══════════════════════════════════════════════════════════════════════════════
+
+DETAILED FILE LIST:
+
+[+] 🔥 HIGH   [GPU-PASSTHROUGH] +110  -0    (110 ) NEW bin/omarchy-gpu-passthrough
+[+] 🔥 HIGH   [GPU-PASSTHROUGH] +1229 -0    (1229) NEW bin/omarchy-gpu-passthrough-bind
+[+] 🔥 HIGH   [GPU-PASSTHROUGH] +1799 -0    (1799) NEW bin/omarchy-gpu-passthrough-utils
+[+] 🔥 HIGH   [GPU-PASSTHROUGH] +2169 -0    (2169) NEW bin/omarchy-gpu-passthrough-setup
+[+] 🔥 HIGH   [GPU-PASSTHROUGH] +2746 -0    (2746) NEW bin/omarchy-gpu-passthrough-info
+[+] 🔥 HIGH   [LOOKING-GLASS]   +274  -0    (274 ) NEW bin/omarchy-looking-glass-launch
+[+] 🔥 HIGH   [LOOKING-GLASS]   +597  -0    (597 ) NEW bin/omarchy-looking-glass-install
+[~] 🔥 HIGH   [NVIDIA-CONFIG]   +65   -25   (90  ) MOD install/config/hardware/nvidia.sh
+[~] 🔥 HIGH   [WINDOWS-VM]      +3736 -296  (4032) MOD bin/omarchy-windows-vm
+[-] 📦 LOW    [MIGRATION]       +0    -10   (10  ) DEL migrations/1767138576.sh
+[-] 📦 LOW    [MIGRATION]       +0    -14   (14  ) DEL migrations/1767716691.sh
+[-] 📦 LOW    [MIGRATION]       +0    -19   (19  ) DEL migrations/1766942230.sh
+[-] 📦 LOW    [MIGRATION]       +0    -32   (32  ) DEL migrations/1767685679.sh
+[-] 📦 LOW    [MIGRATION]       +0    -3    (3   ) DEL migrations/1751134563.sh
+[-] 📦 LOW    [MIGRATION]       +0    -3    (3   ) DEL migrations/1765846739.sh
+[-] 📦 LOW    [MIGRATION]       +0    -3    (3   ) DEL migrations/1767227973.sh
+[-] 📦 LOW    [MIGRATION]       +0    -3    (3   ) DEL migrations/1767414310.sh
+[-] 📦 LOW    [MIGRATION]       +0    -3    (3   ) DEL migrations/1767478141.sh
+[-] 📦 LOW    [MIGRATION]       +0    -3    (3   ) DEL migrations/1767865784.sh
+[-] 📦 LOW    [MIGRATION]       +0    -6    (6   ) DEL migrations/1765884267.sh
+[-] 📦 LOW    [MIGRATION]       +0    -67   (67  ) DEL migrations/1767306902.sh
+[-] 📦 LOW    [MIGRATION]       +0    -9    (9   ) DEL migrations/1767478687.sh
+[~] 📦 LOW    [MIGRATION]       +1    -1    (2   ) MOD migrations/1757021485.sh
+[~] 📦 LOW    [MIGRATION]       +1    -1    (2   ) MOD migrations/1762873545.sh
+[~] 📦 LOW    [MIGRATION]       +1    -3    (4   ) MOD migrations/1758455816.sh
+[-] 📦 LOW    [THEME-FILE]      +0    -23   (23  ) DEL themes/catppuccin/colors.toml
+[-] 📦 LOW    [THEME-FILE]      +0    -23   (23  ) DEL themes/catppuccin-latte/colors.toml
+[-] 📦 LOW    [THEME-FILE]      +0    -23   (23  ) DEL themes/ethereal/colors.toml
+[-] 📦 LOW    [THEME-FILE]      +0    -23   (23  ) DEL themes/everforest/colors.toml
+[-] 📦 LOW    [THEME-FILE]      +0    -23   (23  ) DEL themes/flexoki-light/colors.toml
+[-] 📦 LOW    [THEME-FILE]      +0    -23   (23  ) DEL themes/gruvbox/colors.toml
+[-] 📦 LOW    [THEME-FILE]      +0    -23   (23  ) DEL themes/hackerman/colors.toml
+[-] 📦 LOW    [THEME-FILE]      +0    -23   (23  ) DEL themes/kanagawa/colors.toml
+[-] 📦 LOW    [THEME-FILE]      +0    -23   (23  ) DEL themes/matte-black/colors.toml
+[-] 📦 LOW    [THEME-FILE]      +0    -23   (23  ) DEL themes/nord/colors.toml
+[-] 📦 LOW    [THEME-FILE]      +0    -23   (23  ) DEL themes/osaka-jade/colors.toml
+[-] 📦 LOW    [THEME-FILE]      +0    -23   (23  ) DEL themes/ristretto/colors.toml
+[-] 📦 LOW    [THEME-FILE]      +0    -23   (23  ) DEL themes/rose-pine/colors.toml
+[-] 📦 LOW    [THEME-FILE]      +0    -23   (23  ) DEL themes/tokyo-night/colors.toml
+[+] 📦 LOW    [THEME-FILE]      +1    -0    (1   ) NEW themes/catppuccin/chromium.theme
+[+] 📦 LOW    [THEME-FILE]      +1    -0    (1   ) NEW themes/catppuccin/ghostty.conf
+[+] 📦 LOW    [THEME-FILE]      +1    -0    (1   ) NEW themes/catppuccin-latte/chromium.theme
+[+] 📦 LOW    [THEME-FILE]      +1    -0    (1   ) NEW themes/catppuccin-latte/ghostty.conf
+[+] 📦 LOW    [THEME-FILE]      +1    -0    (1   ) NEW themes/ethereal/chromium.theme
+[+] 📦 LOW    [THEME-FILE]      +1    -0    (1   ) NEW themes/everforest/chromium.theme
+[+] 📦 LOW    [THEME-FILE]      +1    -0    (1   ) NEW themes/flexoki-light/ghostty.conf
+[+] 📦 LOW    [THEME-FILE]      +1    -0    (1   ) NEW themes/gruvbox/chromium.theme
+[+] 📦 LOW    [THEME-FILE]      +1    -0    (1   ) NEW themes/gruvbox/ghostty.conf
+[+] 📦 LOW    [THEME-FILE]      +1    -0    (1   ) NEW themes/hackerman/chromium.theme
+[+] 📦 LOW    [THEME-FILE]      +1    -0    (1   ) NEW themes/kanagawa/chromium.theme
+[+] 📦 LOW    [THEME-FILE]      +1    -0    (1   ) NEW themes/kanagawa/ghostty.conf
+[+] 📦 LOW    [THEME-FILE]      +1    -0    (1   ) NEW themes/matte-black/chromium.theme
+[+] 📦 LOW    [THEME-FILE]      +1    -0    (1   ) NEW themes/nord/chromium.theme
+[+] 📦 LOW    [THEME-FILE]      +1    -0    (1   ) NEW themes/nord/ghostty.conf
+[+] 📦 LOW    [THEME-FILE]      +1    -0    (1   ) NEW themes/osaka-jade/chromium.theme
+[+] 📦 LOW    [THEME-FILE]      +1    -0    (1   ) NEW themes/ristretto/chromium.theme
+[+] 📦 LOW    [THEME-FILE]      +1    -0    (1   ) NEW themes/rose-pine/ghostty.conf
+[+] 📦 LOW    [THEME-FILE]      +1    -0    (1   ) NEW themes/tokyo-night/chromium.theme
+[+] 📦 LOW    [THEME-FILE]      +1    -0    (1   ) NEW themes/tokyo-night/ghostty.conf
+[+] 📦 LOW    [THEME-FILE]      +20   -0    (20  ) NEW themes/everforest/ghostty.conf
+[+] 📦 LOW    [THEME-FILE]      +2    -0    (2   ) NEW themes/catppuccin/waybar.css
+[+] 📦 LOW    [THEME-FILE]      +2    -0    (2   ) NEW themes/ethereal/waybar.css
+[+] 📦 LOW    [THEME-FILE]      +2    -0    (2   ) NEW themes/everforest/waybar.css
+[+] 📦 LOW    [THEME-FILE]      +2    -0    (2   ) NEW themes/flexoki-light/waybar.css
+[+] 📦 LOW    [THEME-FILE]      +2    -0    (2   ) NEW themes/gruvbox/waybar.css
+[+] 📦 LOW    [THEME-FILE]      +2    -0    (2   ) NEW themes/hackerman/waybar.css
+[+] 📦 LOW    [THEME-FILE]      +2    -0    (2   ) NEW themes/kanagawa/waybar.css
+[+] 📦 LOW    [THEME-FILE]      +2    -0    (2   ) NEW themes/matte-black/waybar.css
+[+] 📦 LOW    [THEME-FILE]      +2    -0    (2   ) NEW themes/nord/waybar.css
+[+] 📦 LOW    [THEME-FILE]      +2    -0    (2   ) NEW themes/osaka-jade/waybar.css
+[+] 📦 LOW    [THEME-FILE]      +2    -0    (2   ) NEW themes/ristretto/ghostty.conf
+[+] 📦 LOW    [THEME-FILE]      +2    -0    (2   ) NEW themes/ristretto/waybar.css
+[+] 📦 LOW    [THEME-FILE]      +2    -0    (2   ) NEW themes/rose-pine/waybar.css
+[+] 📦 LOW    [THEME-FILE]      +2    -0    (2   ) NEW themes/tokyo-night/waybar.css
+[+] 📦 LOW    [THEME-FILE]      +21   -0    (21  ) NEW themes/ethereal/mako.ini
+[+] 📦 LOW    [THEME-FILE]      +21   -0    (21  ) NEW themes/hackerman/mako.ini
+[+] 📦 LOW    [THEME-FILE]      +23   -0    (23  ) NEW themes/ethereal/ghostty.conf
+[+] 📦 LOW    [THEME-FILE]      +23   -0    (23  ) NEW themes/hackerman/ghostty.conf
+[+] 📦 LOW    [THEME-FILE]      +24   -0    (24  ) NEW themes/everforest/alacritty.toml
+[+] 📦 LOW    [THEME-FILE]      +24   -0    (24  ) NEW themes/gruvbox/alacritty.toml
+[+] 📦 LOW    [THEME-FILE]      +25   -0    (25  ) NEW themes/osaka-jade/ghostty.conf
+[+] 📦 LOW    [THEME-FILE]      +28   -0    (28  ) NEW themes/ethereal/alacritty.toml
+[+] 📦 LOW    [THEME-FILE]      +28   -0    (28  ) NEW themes/everforest/kitty.conf
+[+] 📦 LOW    [THEME-FILE]      +28   -0    (28  ) NEW themes/hackerman/alacritty.toml
+[+] 📦 LOW    [THEME-FILE]      +28   -0    (28  ) NEW themes/matte-black/ghostty.conf
+[+] 📦 LOW    [THEME-FILE]      +28   -0    (28  ) NEW themes/osaka-jade/alacritty.toml
+[+] 📦 LOW    [THEME-FILE]      +29   -0    (29  ) NEW themes/tokyo-night/alacritty.toml
+[+] 📦 LOW    [THEME-FILE]      +33   -0    (33  ) NEW themes/ristretto/alacritty.toml
+[+] 📦 LOW    [THEME-FILE]      +34   -0    (34  ) NEW themes/ethereal/kitty.conf
+[+] 📦 LOW    [THEME-FILE]      +34   -0    (34  ) NEW themes/hackerman/kitty.conf
+[+] 📦 LOW    [THEME-FILE]      +36   -0    (36  ) NEW themes/kanagawa/alacritty.toml
+[+] 📦 LOW    [THEME-FILE]      +39   -0    (39  ) NEW themes/flexoki-light/alacritty.toml
+[+] 📦 LOW    [THEME-FILE]      +40   -0    (40  ) NEW themes/gruvbox/kitty.conf
+[+] 📦 LOW    [THEME-FILE]      +40   -0    (40  ) NEW themes/nord/kitty.conf
+[+] 📦 LOW    [THEME-FILE]      +4    -0    (4   ) NEW themes/catppuccin-latte/waybar.css
+[+] 📦 LOW    [THEME-FILE]      +44   -0    (44  ) NEW themes/osaka-jade/kitty.conf
+[+] 📦 LOW    [THEME-FILE]      +47   -0    (47  ) NEW themes/nord/alacritty.toml
+[+] 📦 LOW    [THEME-FILE]      +48   -0    (48  ) NEW themes/tokyo-night/kitty.conf
+[+] 📦 LOW    [THEME-FILE]      +5    -0    (5   ) NEW themes/catppuccin/hyprlock.conf
+[+] 📦 LOW    [THEME-FILE]      +5    -0    (5   ) NEW themes/catppuccin-latte/mako.ini
+[+] 📦 LOW    [THEME-FILE]      +5    -0    (5   ) NEW themes/catppuccin-latte/swayosd.css
+[+] 📦 LOW    [THEME-FILE]      +5    -0    (5   ) NEW themes/catppuccin/mako.ini
+[+] 📦 LOW    [THEME-FILE]      +5    -0    (5   ) NEW themes/catppuccin/swayosd.css
+[+] 📦 LOW    [THEME-FILE]      +5    -0    (5   ) NEW themes/ethereal/swayosd.css
+[+] 📦 LOW    [THEME-FILE]      +5    -0    (5   ) NEW themes/everforest/hyprlock.conf
+[+] 📦 LOW    [THEME-FILE]      +5    -0    (5   ) NEW themes/everforest/mako.ini
+[+] 📦 LOW    [THEME-FILE]      +5    -0    (5   ) NEW themes/flexoki-light/hyprlock.conf
+[+] 📦 LOW    [THEME-FILE]      +5    -0    (5   ) NEW themes/flexoki-light/mako.ini
+[+] 📦 LOW    [THEME-FILE]      +5    -0    (5   ) NEW themes/flexoki-light/swayosd.css
+[+] 📦 LOW    [THEME-FILE]      +5    -0    (5   ) NEW themes/gruvbox/hyprlock.conf
+[+] 📦 LOW    [THEME-FILE]      +5    -0    (5   ) NEW themes/gruvbox/mako.ini
+[+] 📦 LOW    [THEME-FILE]      +5    -0    (5   ) NEW themes/hackerman/swayosd.css
+[+] 📦 LOW    [THEME-FILE]      +5    -0    (5   ) NEW themes/kanagawa/hyprlock.conf
+[+] 📦 LOW    [THEME-FILE]      +5    -0    (5   ) NEW themes/kanagawa/mako.ini
+[+] 📦 LOW    [THEME-FILE]      +5    -0    (5   ) NEW themes/matte-black/hyprlock.conf
+[+] 📦 LOW    [THEME-FILE]      +5    -0    (5   ) NEW themes/matte-black/mako.ini
+[+] 📦 LOW    [THEME-FILE]      +5    -0    (5   ) NEW themes/nord/hyprlock.conf
+[+] 📦 LOW    [THEME-FILE]      +5    -0    (5   ) NEW themes/nord/mako.ini
+[+] 📦 LOW    [THEME-FILE]      +5    -0    (5   ) NEW themes/osaka-jade/hyprlock.conf
+[+] 📦 LOW    [THEME-FILE]      +5    -0    (5   ) NEW themes/osaka-jade/mako.ini
+[+] 📦 LOW    [THEME-FILE]      +5    -0    (5   ) NEW themes/osaka-jade/swayosd.css
+[+] 📦 LOW    [THEME-FILE]      +5    -0    (5   ) NEW themes/ristretto/hyprlock.conf
+[+] 📦 LOW    [THEME-FILE]      +5    -0    (5   ) NEW themes/ristretto/mako.ini
+[+] 📦 LOW    [THEME-FILE]      +5    -0    (5   ) NEW themes/ristretto/swayosd.css
+[+] 📦 LOW    [THEME-FILE]      +5    -0    (5   ) NEW themes/rose-pine/hyprlock.conf
+[+] 📦 LOW    [THEME-FILE]      +5    -0    (5   ) NEW themes/rose-pine/mako.ini
+[+] 📦 LOW    [THEME-FILE]      +5    -0    (5   ) NEW themes/tokyo-night/hyprlock.conf
+[+] 📦 LOW    [THEME-FILE]      +5    -0    (5   ) NEW themes/tokyo-night/mako.ini
+[+] 📦 LOW    [THEME-FILE]      +51   -0    (51  ) NEW themes/rose-pine/kitty.conf
+[+] 📦 LOW    [THEME-FILE]      +53   -0    (53  ) NEW themes/matte-black/alacritty.toml
+[+] 📦 LOW    [THEME-FILE]      +53   -0    (53  ) NEW themes/ristretto/kitty.conf
+[+] 📦 LOW    [THEME-FILE]      +54   -0    (54  ) NEW themes/matte-black/kitty.conf
+[+] 📦 LOW    [THEME-FILE]      +6    -0    (6   ) NEW themes/catppuccin-latte/hyprlock.conf
+[+] 📦 LOW    [THEME-FILE]      +6    -0    (6   ) NEW themes/catppuccin-latte/walker.css
+[+] 📦 LOW    [THEME-FILE]      +6    -0    (6   ) NEW themes/catppuccin/walker.css
+[+] 📦 LOW    [THEME-FILE]      +6    -0    (6   ) NEW themes/ethereal/hyprlock.conf
+[+] 📦 LOW    [THEME-FILE]      +6    -0    (6   ) NEW themes/ethereal/walker.css
+[+] 📦 LOW    [THEME-FILE]      +6    -0    (6   ) NEW themes/everforest/swayosd.css
+[+] 📦 LOW    [THEME-FILE]      +6    -0    (6   ) NEW themes/everforest/walker.css
+[+] 📦 LOW    [THEME-FILE]      +6    -0    (6   ) NEW themes/flexoki-light/walker.css
+[+] 📦 LOW    [THEME-FILE]      +6    -0    (6   ) NEW themes/gruvbox/swayosd.css
+[+] 📦 LOW    [THEME-FILE]      +6    -0    (6   ) NEW themes/gruvbox/walker.css
+[+] 📦 LOW    [THEME-FILE]      +6    -0    (6   ) NEW themes/hackerman/hyprlock.conf
+[+] 📦 LOW    [THEME-FILE]      +6    -0    (6   ) NEW themes/hackerman/walker.css
+[+] 📦 LOW    [THEME-FILE]      +6    -0    (6   ) NEW themes/kanagawa/swayosd.css
+[+] 📦 LOW    [THEME-FILE]      +6    -0    (6   ) NEW themes/kanagawa/walker.css
+[+] 📦 LOW    [THEME-FILE]      +6    -0    (6   ) NEW themes/matte-black/swayosd.css
+[+] 📦 LOW    [THEME-FILE]      +6    -0    (6   ) NEW themes/matte-black/walker.css
+[+] 📦 LOW    [THEME-FILE]      +6    -0    (6   ) NEW themes/nord/swayosd.css
+[+] 📦 LOW    [THEME-FILE]      +6    -0    (6   ) NEW themes/nord/walker.css
+[+] 📦 LOW    [THEME-FILE]      +6    -0    (6   ) NEW themes/osaka-jade/walker.css
+[+] 📦 LOW    [THEME-FILE]      +6    -0    (6   ) NEW themes/ristretto/walker.css
+[+] 📦 LOW    [THEME-FILE]      +6    -0    (6   ) NEW themes/rose-pine/swayosd.css
+[+] 📦 LOW    [THEME-FILE]      +6    -0    (6   ) NEW themes/rose-pine/walker.css
+[+] 📦 LOW    [THEME-FILE]      +6    -0    (6   ) NEW themes/tokyo-night/swayosd.css
+[+] 📦 LOW    [THEME-FILE]      +6    -0    (6   ) NEW themes/tokyo-night/walker.css
+[+] 📦 LOW    [THEME-FILE]      +65   -0    (65  ) NEW themes/catppuccin/alacritty.toml
+[+] 📦 LOW    [THEME-FILE]      +67   -0    (67  ) NEW themes/catppuccin-latte/alacritty.toml
+[+] 📦 LOW    [THEME-FILE]      +67   -0    (67  ) NEW themes/flexoki-light/kitty.conf
+[+] 📦 LOW    [THEME-FILE]      +68   -0    (68  ) NEW themes/kanagawa/kitty.conf
+[+] 📦 LOW    [THEME-FILE]      +72   -0    (72  ) NEW themes/rose-pine/alacritty.toml
+[+] 📦 LOW    [THEME-FILE]      +78   -0    (78  ) NEW themes/catppuccin/kitty.conf
+[+] 📦 LOW    [THEME-FILE]      +78   -0    (78  ) NEW themes/catppuccin-latte/kitty.conf
+[-] 📦 LOW    [THEME-FILE]      (binary)         DEL themes/gruvbox/backgrounds/2-gruvbox.jpg
+[~] 📦 LOW    [THEME-FILE]      (binary)         MOD themes/gruvbox/backgrounds/1-grubox.jpg
+[~] 📦 LOW    [UTILITY]         +1    -9    (10  ) MOD bin/omarchy-dev-add-migration
+[-] ⚡ MEDIUM [CONFIG]          +0    -14   (14  ) DEL config/omarchy/extensions/menu.sh
+[~] ⚡ MEDIUM [CONFIG]          +0    -2    (2   ) MOD config/kitty/kitty.conf
+[-] ⚡ MEDIUM [CONFIG]          +0    -4    (4   ) DEL config/opencode/opencode.json
+[-] ⚡ MEDIUM [CONFIG]          +0    -86   (86  ) DEL config/omarchy/themed/alacritty.toml.tpl.sample
+[~] ⚡ MEDIUM [CONFIG]          +1    -11   (12  ) MOD config/waybar/style.css
+[~] ⚡ MEDIUM [CONFIG]          +3    -22   (25  ) MOD config/waybar/config.jsonc
+[-] ⚡ MEDIUM [DEFAULT]         +0    -1    (1   ) DEL default/themed/chromium.theme.tpl
+[~] ⚡ MEDIUM [DEFAULT]         +0    -1    (1   ) MOD default/bash/aliases
+[-] ⚡ MEDIUM [DEFAULT]         +0    -18   (18  ) DEL default/limine/limine.conf
+[-] ⚡ MEDIUM [DEFAULT]         +0    -20   (20  ) DEL default/limine/default.conf
+[-] ⚡ MEDIUM [DEFAULT]         +0    -22   (22  ) DEL default/themed/ghostty.conf.tpl
+[-] ⚡ MEDIUM [DEFAULT]         +0    -2    (2   ) DEL default/systemd/lid.conf
+[-] ⚡ MEDIUM [DEFAULT]         +0    -2    (2   ) DEL default/themed/waybar.css.tpl
+[~] ⚡ MEDIUM [DEFAULT]         +0    -2    (2   ) MOD default/hypr/bindings/tiling-v2.conf
+[-] ⚡ MEDIUM [DEFAULT]         +0    -27   (27  ) DEL default/themed/kitty.conf.tpl
+[-] ⚡ MEDIUM [DEFAULT]         +0    -30   (30  ) DEL default/pacman/pacman-edge.conf
+[-] ⚡ MEDIUM [DEFAULT]         +0    -3    (3   ) DEL default/systemd/hibernate.conf
+[-] ⚡ MEDIUM [DEFAULT]         +0    -369  (369 ) DEL default/omarchy-skill/SKILL.md
+[-] ⚡ MEDIUM [DEFAULT]         +0    -47   (47  ) DEL default/themed/alacritty.toml.tpl
+[-] ⚡ MEDIUM [DEFAULT]         +0    -5    (5   ) DEL default/themed/hyprlock.conf.tpl
+[-] ⚡ MEDIUM [DEFAULT]         +0    -5    (5   ) DEL default/themed/mako.ini.tpl
+[-] ⚡ MEDIUM [DEFAULT]         +0    -5    (5   ) DEL default/themed/swayosd.css.tpl
+[-] ⚡ MEDIUM [DEFAULT]         +0    -6    (6   ) DEL default/themed/walker.css.tpl
+[-] ⚡ MEDIUM [DEFAULT]         +0    -83   (83  ) DEL default/themed/btop.theme.tpl
+[-] ⚡ MEDIUM [DEFAULT]         +0    -97   (97  ) DEL default/voxtype/config.toml
+[-] ⚡ MEDIUM [DEFAULT]         +0    -99   (99  ) DEL default/themed/obsidian.css.tpl
+[~] ⚡ MEDIUM [DEFAULT]         +11   -11   (22  ) MOD default/hypr/apps/jetbrains.conf
+[~] ⚡ MEDIUM [DEFAULT]         +11   -11   (22  ) MOD default/hypr/apps/system.conf
+[?] ⚡ MEDIUM [DEFAULT]         +1    -1    (2   ) ??? default/themed/hyprland.conf.tpl => themes/catppuccin-latte/hyprland.conf
+[~] ⚡ MEDIUM [DEFAULT]         +1    -1    (2   ) MOD default/chromium/extensions/copy-url/manifest.json
+[~] ⚡ MEDIUM [DEFAULT]         +1    -1    (2   ) MOD default/hypr/apps/davinci-resolve.conf
+[~] ⚡ MEDIUM [DEFAULT]         +1    -1    (2   ) MOD default/hypr/apps/hyprshot.conf
+[~] ⚡ MEDIUM [DEFAULT]         +1    -1    (2   ) MOD default/hypr/apps/qemu.conf
+[~] ⚡ MEDIUM [DEFAULT]         +1    -1    (2   ) MOD default/hypr/apps/terminals.conf
+[~] ⚡ MEDIUM [DEFAULT]         +1    -1    (2   ) MOD default/hypr/apps/walker.conf
+[~] ⚡ MEDIUM [DEFAULT]         +1    -1    (2   ) MOD default/hypr/looknfeel.conf
+[~] ⚡ MEDIUM [DEFAULT]         +2    -15   (17  ) MOD default/hypr/bindings/utilities.conf
+[~] ⚡ MEDIUM [DEFAULT]         +2    -2    (4   ) MOD default/hypr/apps/1password.conf
+[~] ⚡ MEDIUM [DEFAULT]         +2    -2    (4   ) MOD default/hypr/apps/bitwarden.conf
+[~] ⚡ MEDIUM [DEFAULT]         +2    -2    (4   ) MOD default/hypr/apps/localsend.conf
+[~] ⚡ MEDIUM [DEFAULT]         +3    -4    (7   ) MOD default/hypr/windows.conf
+[~] ⚡ MEDIUM [DEFAULT]         +4    -3    (7   ) MOD default/hypr/apps/retroarch.conf
+[~] ⚡ MEDIUM [DEFAULT]         +45   -71   (116 ) MOD default/elephant/omarchy_themes.lua
+[~] ⚡ MEDIUM [DEFAULT]         +5    -5    (10  ) MOD default/hypr/apps/webcam-overlay.conf
+[~] ⚡ MEDIUM [DEFAULT]         +6    -6    (12  ) MOD default/hypr/apps/browser.conf
+[~] ⚡ MEDIUM [DEFAULT]         +6    -6    (12  ) MOD default/hypr/apps/steam.conf
+[~] ⚡ MEDIUM [DEFAULT]         +8    -8    (16  ) MOD default/hypr/apps/pip.conf
+[?] ⚡ MEDIUM [DEFAULT]         +9    -9    (18  ) ??? default/themed/hyprland-preview-share-picker.css.tpl => themes/catppuccin-latte/hyprland-preview-share-picker.css
+[?] ⚡ MEDIUM [DEFAULT]         (binary)         ??? default/pacman/{pacman-stable.conf => pacman.conf}
+[~] ⚡ MEDIUM [HYPRLAND]        +1    -0    (1   ) MOD config/hypr/bindings.conf
+[~] ⚡ MEDIUM [HYPRLAND]        +1    -1    (2   ) MOD config/hypr/hypridle.conf
+[~] ⚡ MEDIUM [HYPRLAND]        +1    -1    (2   ) MOD config/hypr/hyprland.conf
+[~] ⚡ MEDIUM [HYPRLAND]        +2    -5    (7   ) MOD config/hypr/input.conf
+[~] ⚡ MEDIUM [INSTALL]         +0    -1    (1   ) MOD install/packaging/webapps.sh
+[-] ⚡ MEDIUM [INSTALL]         +0    -2    (2   ) DEL install/config/input-group.sh
+[~] ⚡ MEDIUM [INSTALL]         +0    -2    (2   ) MOD install/config/all.sh
+[-] ⚡ MEDIUM [INSTALL]         +0    -3    (3   ) DEL install/config/omarchy-ai-skill.sh
+[~] ⚡ MEDIUM [INSTALL]         +0    -3    (3   ) MOD install/omarchy-base.packages
+[~] ⚡ MEDIUM [INSTALL]         +0    -3    (3   ) MOD install/omarchy-other.packages
+[~] ⚡ MEDIUM [INSTALL]         +1    -1    (2   ) MOD install/config/walker-elephant.sh
+[~] ⚡ MEDIUM [INSTALL]         +2    -8    (10  ) MOD install/post-install/pacman.sh
+[~] ⚡ MEDIUM [INSTALL]         +3    -8    (11  ) MOD install/preflight/pacman.sh
+[~] ⚡ MEDIUM [INSTALL]         +45   -5    (50  ) MOD install/login/limine-snapper.sh
+[~] ⚡ MEDIUM [INSTALL]         +8    -4    (12  ) MOD install/config/theme.sh
+[+] ⚡ MEDIUM [INSTALL]         (binary)         NEW install/packages.ignored
+[+] ⚡ MEDIUM [INSTALL]         (binary)         NEW install/packages.pinned
+[~] ⚡ MEDIUM [OTHER]           +1    -1    (2   ) MOD version
+[~] ⚡ MEDIUM [OTHER]           +3    -10   (13  ) MOD boot.sh
+[?] ⚡ MEDIUM [OTHER]           (binary)         ??? {default/walker => autostart}/walker.desktop
+[-] ⚡ MEDIUM [OTHER]           (binary)         DEL applications/icons/Google Maps.png
+[+] ⚡ MEDIUM [THEME-FILE]      +10   -0    (10  ) NEW themes/tokyo-night/hyprland.conf
+[~] ⚡ MEDIUM [THEME-FILE]      +1    -1    (2   ) MOD themes/kanagawa/hyprland.conf
+[+] ⚡ MEDIUM [THEME-FILE]      +12   -0    (12  ) NEW themes/ethereal/hyprland.conf
+[+] ⚡ MEDIUM [THEME-FILE]      +12   -0    (12  ) NEW themes/hackerman/hyprland.conf
+[+] ⚡ MEDIUM [THEME-FILE]      +9    -0    (9   ) NEW themes/catppuccin/hyprland.conf
+[+] ⚡ MEDIUM [THEME-FILE]      +9    -0    (9   ) NEW themes/everforest/hyprland.conf
+[+] ⚡ MEDIUM [THEME-FILE]      +9    -0    (9   ) NEW themes/flexoki-light/hyprland.conf
+[+] ⚡ MEDIUM [THEME-FILE]      +9    -0    (9   ) NEW themes/gruvbox/hyprland.conf
+[+] ⚡ MEDIUM [THEME-FILE]      +9    -0    (9   ) NEW themes/matte-black/hyprland.conf
+[+] ⚡ MEDIUM [THEME-FILE]      +9    -0    (9   ) NEW themes/nord/hyprland.conf
+[+] ⚡ MEDIUM [THEME-FILE]      +9    -0    (9   ) NEW themes/osaka-jade/hyprland.conf
+[+] ⚡ MEDIUM [THEME-FILE]      +9    -0    (9   ) NEW themes/ristretto/hyprland.conf
+[+] ⚡ MEDIUM [THEME-FILE]      +9    -0    (9   ) NEW themes/rose-pine/hyprland.conf
+[+] ⚡ MEDIUM [THEME-FILE]      +94   -0    (94  ) NEW themes/catppuccin/hyprland-preview-share-picker.css
+[+] ⚡ MEDIUM [THEME-FILE]      +94   -0    (94  ) NEW themes/ethereal/hyprland-preview-share-picker.css
+[+] ⚡ MEDIUM [THEME-FILE]      +94   -0    (94  ) NEW themes/everforest/hyprland-preview-share-picker.css
+[+] ⚡ MEDIUM [THEME-FILE]      +94   -0    (94  ) NEW themes/flexoki-light/hyprland-preview-share-picker.css
+[+] ⚡ MEDIUM [THEME-FILE]      +94   -0    (94  ) NEW themes/gruvbox/hyprland-preview-share-picker.css
+[+] ⚡ MEDIUM [THEME-FILE]      +94   -0    (94  ) NEW themes/hackerman/hyprland-preview-share-picker.css
+[+] ⚡ MEDIUM [THEME-FILE]      +94   -0    (94  ) NEW themes/kanagawa/hyprland-preview-share-picker.css
+[+] ⚡ MEDIUM [THEME-FILE]      +94   -0    (94  ) NEW themes/matte-black/hyprland-preview-share-picker.css
+[+] ⚡ MEDIUM [THEME-FILE]      +94   -0    (94  ) NEW themes/nord/hyprland-preview-share-picker.css
+[+] ⚡ MEDIUM [THEME-FILE]      +94   -0    (94  ) NEW themes/osaka-jade/hyprland-preview-share-picker.css
+[+] ⚡ MEDIUM [THEME-FILE]      +94   -0    (94  ) NEW themes/ristretto/hyprland-preview-share-picker.css
+[+] ⚡ MEDIUM [THEME-FILE]      +94   -0    (94  ) NEW themes/rose-pine/hyprland-preview-share-picker.css
+[+] ⚡ MEDIUM [THEME-FILE]      +94   -0    (94  ) NEW themes/tokyo-night/hyprland-preview-share-picker.css
+[-] ⚡ MEDIUM [THEME-SYSTEM]    +0    -47   (47  ) DEL bin/omarchy-theme-set-templates
+[-] ⚡ MEDIUM [THEME-SYSTEM]    +0    -7    (7   ) DEL bin/omarchy-theme-bg-install
+[~] ⚡ MEDIUM [THEME-SYSTEM]    +14   -32   (46  ) MOD bin/omarchy-theme-set
+[~] ⚡ MEDIUM [THEME-SYSTEM]    +1    -7    (8   ) MOD bin/omarchy-theme-current
+[~] ⚡ MEDIUM [THEME-SYSTEM]    +2    -4    (6   ) MOD bin/omarchy-theme-bg-next
+[~] ⚡ MEDIUM [THEME-SYSTEM]    +2    -5    (7   ) MOD bin/omarchy-theme-list
+[~] ⚡ MEDIUM [THEME-SYSTEM]    +30   -22   (52  ) MOD bin/omarchy-theme-set-vscode
+[+] ⚡ MEDIUM [THEME-SYSTEM]    +34   -0    (34  ) NEW bin/omarchy-theme-next
+[+] ⚡ MEDIUM [THEME-SYSTEM]    +4    -0    (4   ) NEW bin/omarchy-theme-set-cursor
+[~] ⚡ MEDIUM [THEME-SYSTEM]    +4    -4    (8   ) MOD bin/omarchy-theme-set-browser
+[~] ⚡ MEDIUM [THEME-SYSTEM]    +5    -0    (5   ) MOD bin/omarchy-theme-remove
+[~] ⚡ MEDIUM [THEME-SYSTEM]    +667  -10   (677 ) MOD bin/omarchy-theme-set-obsidian
+[-] ⚡ MEDIUM [UTILITY]         +0    -102  (102 ) DEL bin/omarchy-remove-dev-env
+[~] ⚡ MEDIUM [UTILITY]         +0    -1    (1   ) MOD bin/omarchy-battery-remaining
+[-] ⚡ MEDIUM [UTILITY]         +0    -13   (13  ) DEL bin/omarchy-toggle-suspend
+[~] ⚡ MEDIUM [UTILITY]         +0    -13   (13  ) MOD bin/omarchy-update-perform
+[-] ⚡ MEDIUM [UTILITY]         +0    -14   (14  ) DEL bin/omarchy-reinstall-pkgs
+[-] ⚡ MEDIUM [UTILITY]         +0    -17   (17  ) DEL bin/omarchy-pkg-aur-add
+[-] ⚡ MEDIUM [UTILITY]         +0    -18   (18  ) DEL bin/omarchy-hibernation-available
+[-] ⚡ MEDIUM [UTILITY]         +0    -18   (18  ) DEL bin/omarchy-update-analyze-logs
+[-] ⚡ MEDIUM [UTILITY]         +0    -18   (18  ) DEL bin/omarchy-voxtype-install
+[-] ⚡ MEDIUM [UTILITY]         +0    -20   (20  ) DEL bin/omarchy-reinstall-configs
+[-] ⚡ MEDIUM [UTILITY]         +0    -20   (20  ) DEL bin/omarchy-voxtype-remove
+[-] ⚡ MEDIUM [UTILITY]         +0    -21   (21  ) DEL bin/omarchy-refresh-chromium
+[~] ⚡ MEDIUM [UTILITY]         +0    -2    (2   ) MOD bin/omarchy-branch-set
+[~] ⚡ MEDIUM [UTILITY]         +0    -2    (2   ) MOD bin/omarchy-cmd-apple-display-brightness
+[~] ⚡ MEDIUM [UTILITY]         +0    -2    (2   ) MOD bin/omarchy-cmd-audio-switch
+[~] ⚡ MEDIUM [UTILITY]         +0    -2    (2   ) MOD bin/omarchy-cmd-first-run
+[~] ⚡ MEDIUM [UTILITY]         +0    -2    (2   ) MOD bin/omarchy-cmd-missing
+[~] ⚡ MEDIUM [UTILITY]         +0    -2    (2   ) MOD bin/omarchy-cmd-present
+[~] ⚡ MEDIUM [UTILITY]         +0    -2    (2   ) MOD bin/omarchy-cmd-share
+[~] ⚡ MEDIUM [UTILITY]         +0    -2    (2   ) MOD bin/omarchy-drive-set-password
+[~] ⚡ MEDIUM [UTILITY]         +0    -2    (2   ) MOD bin/omarchy-font-list
+[~] ⚡ MEDIUM [UTILITY]         +0    -2    (2   ) MOD bin/omarchy-hook
+[~] ⚡ MEDIUM [UTILITY]         +0    -2    (2   ) MOD bin/omarchy-hyprland-workspace-toggle-gaps
+[~] ⚡ MEDIUM [UTILITY]         +0    -2    (2   ) MOD bin/omarchy-install-dropbox
+[~] ⚡ MEDIUM [UTILITY]         +0    -2    (2   ) MOD bin/omarchy-install-steam
+[~] ⚡ MEDIUM [UTILITY]         +0    -2    (2   ) MOD bin/omarchy-install-tailscale
+[~] ⚡ MEDIUM [UTILITY]         +0    -2    (2   ) MOD bin/omarchy-install-terminal
+[~] ⚡ MEDIUM [UTILITY]         +0    -2    (2   ) MOD bin/omarchy-install-vscode
+[~] ⚡ MEDIUM [UTILITY]         +0    -2    (2   ) MOD bin/omarchy-install-xbox-controllers
+[~] ⚡ MEDIUM [UTILITY]         +0    -2    (2   ) MOD bin/omarchy-launch-about
+[~] ⚡ MEDIUM [UTILITY]         +0    -2    (2   ) MOD bin/omarchy-launch-screensaver
+[~] ⚡ MEDIUM [UTILITY]         +0    -2    (2   ) MOD bin/omarchy-launch-tui
+[~] ⚡ MEDIUM [UTILITY]         +0    -2    (2   ) MOD bin/omarchy-launch-walker
+[~] ⚡ MEDIUM [UTILITY]         +0    -2    (2   ) MOD bin/omarchy-launch-webapp
+[~] ⚡ MEDIUM [UTILITY]         +0    -2    (2   ) MOD bin/omarchy-lock-screen
+[~] ⚡ MEDIUM [UTILITY]         +0    -2    (2   ) MOD bin/omarchy-migrate
+[~] ⚡ MEDIUM [UTILITY]         +0    -2    (2   ) MOD bin/omarchy-notification-dismiss
+[~] ⚡ MEDIUM [UTILITY]         +0    -2    (2   ) MOD bin/omarchy-pkg-add
+[~] ⚡ MEDIUM [UTILITY]         +0    -2    (2   ) MOD bin/omarchy-pkg-aur-install
+[~] ⚡ MEDIUM [UTILITY]         +0    -2    (2   ) MOD bin/omarchy-pkg-drop
+[~] ⚡ MEDIUM [UTILITY]         +0    -2    (2   ) MOD bin/omarchy-pkg-install
+[~] ⚡ MEDIUM [UTILITY]         +0    -2    (2   ) MOD bin/omarchy-pkg-missing
+[~] ⚡ MEDIUM [UTILITY]         +0    -2    (2   ) MOD bin/omarchy-pkg-present
+[~] ⚡ MEDIUM [UTILITY]         +0    -2    (2   ) MOD bin/omarchy-pkg-remove
+[~] ⚡ MEDIUM [UTILITY]         +0    -2    (2   ) MOD bin/omarchy-refresh-fastfetch
+[~] ⚡ MEDIUM [UTILITY]         +0    -2    (2   ) MOD bin/omarchy-refresh-hypridle
+[~] ⚡ MEDIUM [UTILITY]         +0    -2    (2   ) MOD bin/omarchy-refresh-hyprland
+[~] ⚡ MEDIUM [UTILITY]         +0    -2    (2   ) MOD bin/omarchy-refresh-hyprlock
+[~] ⚡ MEDIUM [UTILITY]         +0    -2    (2   ) MOD bin/omarchy-refresh-hyprsunset
+[~] ⚡ MEDIUM [UTILITY]         +0    -2    (2   ) MOD bin/omarchy-refresh-plymouth
+[~] ⚡ MEDIUM [UTILITY]         +0    -2    (2   ) MOD bin/omarchy-refresh-swayosd
+[~] ⚡ MEDIUM [UTILITY]         +0    -2    (2   ) MOD bin/omarchy-refresh-waybar
+[~] ⚡ MEDIUM [UTILITY]         +0    -2    (2   ) MOD bin/omarchy-tui-install
+[~] ⚡ MEDIUM [UTILITY]         +0    -2    (2   ) MOD bin/omarchy-tui-remove
+[~] ⚡ MEDIUM [UTILITY]         +0    -2    (2   ) MOD bin/omarchy-webapp-install
+[~] ⚡ MEDIUM [UTILITY]         +0    -2    (2   ) MOD bin/omarchy-webapp-remove
+[~] ⚡ MEDIUM [UTILITY]         +0    -3    (3   ) MOD bin/omarchy-cmd-screenshot
+[~] ⚡ MEDIUM [UTILITY]         +0    -3    (3   ) MOD bin/omarchy-cmd-terminal-cwd
+[~] ⚡ MEDIUM [UTILITY]         +0    -3    (3   ) MOD bin/omarchy-font-current
+[~] ⚡ MEDIUM [UTILITY]         +0    -3    (3   ) MOD bin/omarchy-install-chromium-google-account
+[~] ⚡ MEDIUM [UTILITY]         +0    -3    (3   ) MOD bin/omarchy-launch-bluetooth
+[~] ⚡ MEDIUM [UTILITY]         +0    -3    (3   ) MOD bin/omarchy-launch-browser
+[~] ⚡ MEDIUM [UTILITY]         +0    -3    (3   ) MOD bin/omarchy-launch-or-focus
+[~] ⚡ MEDIUM [UTILITY]         +0    -3    (3   ) MOD bin/omarchy-launch-wifi
+[~] ⚡ MEDIUM [UTILITY]         +0    -3    (3   ) MOD bin/omarchy-pkg-aur-accessible
+[~] ⚡ MEDIUM [UTILITY]         +0    -3    (3   ) MOD bin/omarchy-powerprofiles-list
+[-] ⚡ MEDIUM [UTILITY]         +0    -5    (5   ) DEL bin/omarchy-launch-audio
+[-] ⚡ MEDIUM [UTILITY]         +0    -5    (5   ) DEL bin/omarchy-restart-btop
+[-] ⚡ MEDIUM [UTILITY]         +0    -5    (5   ) DEL bin/omarchy-restart-hyprctl
+[-] ⚡ MEDIUM [UTILITY]         +0    -5    (5   ) DEL bin/omarchy-restart-mako
+[-] ⚡ MEDIUM [UTILITY]         +0    -5    (5   ) DEL bin/omarchy-restart-opencode
+[-] ⚡ MEDIUM [UTILITY]         +0    -5    (5   ) DEL bin/omarchy-voxtype-model
+[-] ⚡ MEDIUM [UTILITY]         +0    -59   (59  ) DEL bin/omarchy-hibernation-remove
+[-] ⚡ MEDIUM [UTILITY]         +0    -6    (6   ) DEL bin/omarchy-voxtype-config
+[-] ⚡ MEDIUM [UTILITY]         +0    -70   (70  ) DEL bin/omarchy-hibernation-setup
+[-] ⚡ MEDIUM [UTILITY]         +0    -8    (8   ) DEL bin/omarchy-reinstall-git
+[-] ⚡ MEDIUM [UTILITY]         +0    -9    (9   ) DEL bin/omarchy-voxtype-status
+[~] ⚡ MEDIUM [UTILITY]         +10   -14   (24  ) MOD bin/omarchy-restart-walker
+[~] ⚡ MEDIUM [UTILITY]         +1    -0    (1   ) MOD bin/omarchy-update
+[~] ⚡ MEDIUM [UTILITY]         +1    -1    (2   ) MOD bin/omarchy-drive-select
+[~] ⚡ MEDIUM [UTILITY]         +1    -1    (2   ) MOD bin/omarchy-update-git
+[~] ⚡ MEDIUM [UTILITY]         +1    -1    (2   ) MOD bin/omarchy-update-system-pkgs
+[~] ⚡ MEDIUM [UTILITY]         +1    -14   (15  ) MOD bin/omarchy-channel-set
+[~] ⚡ MEDIUM [UTILITY]         +12   -2    (14  ) MOD bin/omarchy-snapshot
+[~] ⚡ MEDIUM [UTILITY]         +1    -2    (3   ) MOD bin/omarchy-drive-info
+[~] ⚡ MEDIUM [UTILITY]         +1    -3    (4   ) MOD bin/omarchy-install-dev-env
+[~] ⚡ MEDIUM [UTILITY]         +1    -3    (4   ) MOD bin/omarchy-refresh-walker
+[~] ⚡ MEDIUM [UTILITY]         +1    -35   (36  ) MOD bin/omarchy-debug
+[~] ⚡ MEDIUM [UTILITY]         +1    -4    (5   ) MOD bin/omarchy-font-set
+[~] ⚡ MEDIUM [UTILITY]         +1    -4    (5   ) MOD bin/omarchy-install-docker-dbs
+[~] ⚡ MEDIUM [UTILITY]         +1    -4    (5   ) MOD bin/omarchy-launch-editor
+[~] ⚡ MEDIUM [UTILITY]         +1    -4    (5   ) MOD bin/omarchy-launch-floating-terminal-with-presentation
+[~] ⚡ MEDIUM [UTILITY]         +1    -4    (5   ) MOD bin/omarchy-launch-or-focus-tui
+[~] ⚡ MEDIUM [UTILITY]         +1    -4    (5   ) MOD bin/omarchy-launch-or-focus-webapp
+[~] ⚡ MEDIUM [UTILITY]         +1    -4    (5   ) MOD bin/omarchy-refresh-applications
+[~] ⚡ MEDIUM [UTILITY]         +1    -5    (6   ) MOD bin/omarchy-setup-fingerprint
+[~] ⚡ MEDIUM [UTILITY]         +17   -131  (148 ) MOD bin/omarchy-menu
+[~] ⚡ MEDIUM [UTILITY]         +1    -8    (9   ) MOD bin/omarchy-cmd-reboot
+[~] ⚡ MEDIUM [UTILITY]         +1    -8    (9   ) MOD bin/omarchy-cmd-shutdown
+[~] ⚡ MEDIUM [UTILITY]         +21   -3    (24  ) MOD bin/omarchy-refresh-limine
+[~] ⚡ MEDIUM [UTILITY]         +2    -16   (18  ) MOD bin/omarchy-cmd-screenrecord
+[~] ⚡ MEDIUM [UTILITY]         +2    -2    (4   ) MOD bin/omarchy-update-restart
+[~] ⚡ MEDIUM [UTILITY]         +2    -3    (5   ) MOD bin/omarchy-update-without-idle
+[~] ⚡ MEDIUM [UTILITY]         +25   -6    (31  ) MOD bin/omarchy-reinstall
+[~] ⚡ MEDIUM [UTILITY]         +3    -3    (6   ) MOD bin/omarchy-restart-terminal
+[~] ⚡ MEDIUM [UTILITY]         +3    -5    (8   ) MOD bin/omarchy-refresh-config
+[~] ⚡ MEDIUM [UTILITY]         +36   -52   (88  ) MOD bin/omarchy-menu-keybindings
+[~] ⚡ MEDIUM [UTILITY]         +4    -4    (8   ) MOD bin/omarchy-cmd-screensaver
+[~] ⚡ MEDIUM [UTILITY]         +4    -5    (9   ) MOD bin/omarchy-refresh-pacman
+[+] ⚡ MEDIUM [UTILITY]         +7    -0    (7   ) NEW bin/omarchy-pkg-pinned
+
+═══════════════════════════════════════════════════════════════════════════════
+
+HIGH PRIORITY FILES FOR RTX 4070 SETUP:
+
+  🎯 omarchy-gpu-passthrough                  + 110 /- 0 - Main GPU passthrough orchestrator
+  🎯 omarchy-gpu-passthrough-bind             + 1229 /- 0 - Binds GPU to VFIO for passthrough
+  🎯 omarchy-gpu-passthrough-info             + 2746 /- 0 - Displays GPU passthrough information
+  🎯 omarchy-gpu-passthrough-setup            + 2169 /- 0 - GPU passthrough initial setup script
+  🎯 omarchy-gpu-passthrough-utils            + 1799 /- 0 - GPU passthrough utility functions
+  🎯 omarchy-looking-glass-install            + 597 /- 0 - Installs Looking Glass for low-latency VM display
+  🎯 omarchy-looking-glass-launch             + 274 /- 0 - Launches Looking Glass client
+  🎯 omarchy-windows-vm                       + 3736 /- 296 - Main Windows VM management script
+  🎯 nvidia.sh                                + 65 /- 25 - NVIDIA driver configuration updates
+
+═══════════════════════════════════════════════════════════════════════════════
+
+REVIEW COMMANDS:
+  # View specific file changes
+  git diff master..pr-3454 -- <filename>
+
+  # View high priority GPU files
+  git diff master..pr-3454 -- bin/omarchy-gpu-passthrough*
+
+  # Interactive review
+  tig master..pr-3454
+
+  # Review by category
+  git diff --stat master..pr-3454 -- bin/
+  git diff --stat master..pr-3454 -- themes/
+  git diff --stat master..pr-3454 -- install/
+

@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+cat > summary.md << 'EOF'
+# Branch Comparison Summary
+## Commit Counts
+EOF
+echo "- Master: $(git rev-list --count master)" >> summary.md
+echo "- Dev: $(git rev-list --count dev)" >> summary.md
+echo "- RC: $(git rev-list --count rc)" >> summary.md
+echo "" >> summary.md
+echo "## Ahead/Behind Analysis" >> summary.md
+git rev-list --left-right --count master...dev | awk '{print "- Dev is "$2" commits ahead, "$1" commits behind master"}' >> summary.md
+git rev-list --left-right --count master...rc | awk '{print "- RC is "$2" commits ahead, "$1" commits behind master"}' >> summary.md
+git rev-list --left-right --count dev...rc | awk '{print "- RC is "$2" commits ahead, "$1" commits behind dev"}' >> summary.md
+cat summary.md
