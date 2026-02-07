@@ -416,32 +416,3 @@ DETAILED FILE LIST:
 
 ═══════════════════════════════════════════════════════════════════════════════
 
-HIGH PRIORITY FILES FOR RTX 4070 SETUP:
-
-  🎯 omarchy-gpu-passthrough                  + 110 /- 0 - Main GPU passthrough orchestrator
-  🎯 omarchy-gpu-passthrough-bind             + 1229 /- 0 - Binds GPU to VFIO for passthrough
-  🎯 omarchy-gpu-passthrough-info             + 2746 /- 0 - Displays GPU passthrough information
-  🎯 omarchy-gpu-passthrough-setup            + 2169 /- 0 - GPU passthrough initial setup script
-  🎯 omarchy-gpu-passthrough-utils            + 1799 /- 0 - GPU passthrough utility functions
-  🎯 omarchy-looking-glass-install            + 597 /- 0 - Installs Looking Glass for low-latency VM display
-  🎯 omarchy-looking-glass-launch             + 274 /- 0 - Launches Looking Glass client
-  🎯 omarchy-windows-vm                       + 3736 /- 296 - Main Windows VM management script
-  🎯 nvidia.sh                                + 65 /- 25 - NVIDIA driver configuration updates
-
-═══════════════════════════════════════════════════════════════════════════════
-
-REVIEW COMMANDS:
-  # View specific file changes
-  git diff master..pr-3454 -- <filename>
-
-  # View high priority GPU files
-  git diff master..pr-3454 -- bin/omarchy-gpu-passthrough*
-
-  # Interactive review
-  tig master..pr-3454
-
-  # Review by category
-  git diff --stat master..pr-3454 -- bin/
-  git diff --stat master..pr-3454 -- themes/
-  git diff --stat master..pr-3454 -- install/
-
