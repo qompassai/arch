@@ -1,94 +1,60 @@
-#!/bin/bash
-# Extract High Priority PR Files for Review
-# Save as: ~/bin/extract-pr-files
-
+#!/usr//bin/env bash
 PR_BRANCH="${1:-pr-3454}"
 BASE_BRANCH="${2:-master}"
 OUTPUT_DIR="pr-${PR_BRANCH}-review"
-
-# Colors for output
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
-NC='\033[0m' # No Color
-
-echo -e "${GREEN}╔══════════════════════════════════════════════════════════════╗${NC}"
-echo -e "${GREEN}║      Extracting High Priority Files from PR #${PR_BRANCH}      ║${NC}"
-echo -e "${GREEN}╚══════════════════════════════════════════════════════════════╝${NC}"
-echo
-
-# Create output directory
+NC='\033[0m'
 mkdir -p "$OUTPUT_DIR"/{new-files,modified-files,diffs}
-
-# High priority files to extract
 HIGH_PRIORITY_FILES=(
-  "bin/omarchy-gpu-passthrough"
-  "bin/omarchy-gpu-passthrough-bind"
-  "bin/omarchy-gpu-passthrough-utils"
-  "bin/omarchy-gpu-passthrough-setup"
-  "bin/omarchy-gpu-passthrough-info"
-  "bin/omarchy-looking-glass-launch"
-  "bin/omarchy-looking-glass-install"
-  "install/config/hardware/nvidia.sh"
-  "bin/omarchy-windows-vm"
+    "bin/omarchy-gpu-passthrough"
+    "bin/omarchy-gpu-passthrough-bind"
+    "bin/omarchy-gpu-passthrough-utils"
+    "bin/omarchy-gpu-passthrough-setup"
+    "bin/omarchy-gpu-passthrough-info"
+    "bin/omarchy-looking-glass-launch"
+    "bin/omarchy-looking-glass-install"
+    "install/config/hardware/nvidia.sh"
+    "bin/omarchy-windows-vm"
 )
-
 echo -e "${BLUE}📁 Output directory: ${OUTPUT_DIR}/${NC}"
 echo
-
-# Checkout PR branch temporarily
 CURRENT_BRANCH=$(git branch --show-current)
 echo -e "${YELLOW}🔄 Switching to ${PR_BRANCH}...${NC}"
-git checkout "$PR_BRANCH" 2>/dev/null || {
-  echo -e "${RED}❌ Failed to checkout ${PR_BRANCH}${NC}"
-  exit 1
+git checkout "$PR_BRANCH" 2> /dev/null || {
+    echo -e "${RED}❌ Failed to checkout ${PR_BRANCH}${NC}"
+    exit 1
 }
-
-# Extract each file
 for file in "${HIGH_PRIORITY_FILES[@]}"; do
-  filename=$(basename "$file")
+    filename=$(basename "$file")
 
-  # Check if file exists in PR branch
-  if [[ -f "$file" ]]; then
-    # Get file status
-    status=$(git diff --name-status "$BASE_BRANCH".."$PR_BRANCH" -- "$file" 2>/dev/null | cut -f1)
+    if [[ -f $file ]]; then
+        status=$(git diff --name-status "$BASE_BRANCH".."$PR_BRANCH" -- "$file" 2> /dev/null | cut -f1)
 
-    if [[ $status == "A" ]]; then
-      # New file - copy it
-      echo -e "${GREEN}[+] NEW:${NC} $filename"
-      cp "$file" "$OUTPUT_DIR/new-files/$filename"
-
-      # Get line count
-      lines=$(wc -l < "$file")
-      echo "    📊 Lines: $lines"
-
-    elif [[ $status == "M" ]]; then
-      # Modified file - copy new version and create diff
-      echo -e "${YELLOW}[~] MODIFIED:${NC} $filename"
-      cp "$file" "$OUTPUT_DIR/modified-files/$filename"
-
-      # Create diff file
-      git diff "$BASE_BRANCH".."$PR_BRANCH" -- "$file" > "$OUTPUT_DIR/diffs/$filename.diff"
-
-      # Get change stats
-      stats=$(git diff --numstat "$BASE_BRANCH".."$PR_BRANCH" -- "$file" | awk '{print "+", $1, " -", $2}')
-      echo "    📊 Changes: $stats"
+        if [[ $status == "A" ]]; then
+            echo -e "${GREEN}[+] NEW:${NC} $filename"
+            cp "$file" "$OUTPUT_DIR/new-files/$filename"
+            lines=$(wc -l < "$file")
+            echo "    📊 Lines: $lines"
+        elif [[ $status == "M" ]]; then
+            echo -e "${YELLOW}[~] MODIFIED:${NC} $filename"
+            cp "$file" "$OUTPUT_DIR/modified-files/$filename"
+            git diff "$BASE_BRANCH".."$PR_BRANCH" -- "$file" > "$OUTPUT_DIR/diffs/$filename.diff"
+            stats=$(git diff --numstat "$BASE_BRANCH".."$PR_BRANCH" -- "$file" | awk '{print "+", $1, " -", $2}')
+            echo "    📊 Changes: $stats"
+        fi
+        file_type=$(file -b "$file" | cut -d',' -f1)
+        echo "    📝 Type: $file_type"
+        echo
+    else
+        echo -e "${RED}[!] NOT FOUND:${NC} $file"
+        echo
     fi
-
-    # Get file type info
-    file_type=$(file -b "$file" | cut -d',' -f1)
-    echo "    📝 Type: $file_type"
-    echo
-  else
-    echo -e "${RED}[!] NOT FOUND:${NC} $file"
-    echo
-  fi
 done
-
-# Switch back to original branch
 echo -e "${YELLOW}🔄 Switching back to ${CURRENT_BRANCH}...${NC}"
-git checkout "$CURRENT_BRANCH" 2>/dev/null
+git checkout "$CURRENT_BRANCH" 2> /dev/null
 
 echo
 echo -e "${GREEN}✅ Extraction complete!${NC}"
@@ -99,78 +65,50 @@ echo "  ├── new-files/          # Brand new scripts (9 files)"
 echo "  ├── modified-files/     # Updated scripts (with current state)"
 echo "  └── diffs/              # Diff files showing what changed"
 echo
-echo -e "${BLUE}📖 Quick review commands:${NC}"
-echo "  # View all new GPU scripts"
-echo "  ls -lh $OUTPUT_DIR/new-files/"
-echo
-echo "  # Read a specific new file"
-echo "  nvim $OUTPUT_DIR/new-files/omarchy-gpu-passthrough-setup"
-echo
-echo "  # Review what changed in nvidia.sh"
-echo "  nvim $OUTPUT_DIR/diffs/nvidia.sh.diff"
-echo
-echo "  # Browse all files interactively"
-echo "  cd $OUTPUT_DIR && ranger"
-echo
-echo -e "${BLUE}🔍 Quick analysis:${NC}"
-echo "  # Count lines in all new files"
-echo "  wc -l $OUTPUT_DIR/new-files/* | sort -n"
-echo
-echo "  # Search for RTX 4070 references"
-echo "  grep -r '4070\|Ada\|89\|sm_89' $OUTPUT_DIR/"
-echo
-echo "  # Find VFIO references"
-echo "  grep -r 'vfio\|VFIO' $OUTPUT_DIR/new-files/"
-echo
-
-# Generate quick reference document
 cat > "$OUTPUT_DIR/README.md" << EOF
 # PR #${PR_BRANCH} High Priority Files Review
-
 Generated: $(date)
-
 ## Summary
 
-This directory contains the high-priority GPU-related files from PR #${PR_BRANCH}.
+This directory contains the files from PR #${PR_BRANCH}.
 
-### New Files (GPU Passthrough Feature)
+### New Files
 EOF
 
 for file in "$OUTPUT_DIR/new-files"/*; do
-  if [[ -f "$file" ]]; then
-    filename=$(basename "$file")
-    lines=$(wc -l < "$file" 2>/dev/null || echo "0")
+    if [[ -f $file ]]; then
+        filename=$(basename "$file")
+        lines=$(wc -l < "$file" 2> /dev/null || echo "0")
 
-    # Get description
-    case $filename in
-      omarchy-gpu-passthrough-setup)
-        desc="Initial GPU passthrough setup - configures IOMMU, VFIO drivers"
-        ;;
-      omarchy-gpu-passthrough-bind)
-        desc="Binds RTX 4070 to VFIO driver for VM passthrough"
-        ;;
-      omarchy-gpu-passthrough-info)
-        desc="Displays GPU passthrough configuration and status"
-        ;;
-      omarchy-gpu-passthrough-utils)
-        desc="Utility functions for GPU passthrough management"
-        ;;
-      omarchy-gpu-passthrough)
-        desc="Main orchestrator for GPU passthrough operations"
-        ;;
-      omarchy-looking-glass-install)
-        desc="Installs Looking Glass for low-latency VM display sharing"
-        ;;
-      omarchy-looking-glass-launch)
-        desc="Launches Looking Glass client for VM display"
-        ;;
-      *)
-        desc="GPU passthrough related utility"
-        ;;
-    esac
+        case $filename in
+            omarchy-gpu-passthrough-setup)
+                desc="Initial GPU passthrough setup - configures IOMMU, VFIO drivers"
+                ;;
+            omarchy-gpu-passthrough-bind)
+                desc="Binds RTX 4070 to VFIO driver for VM passthrough"
+                ;;
+            omarchy-gpu-passthrough-info)
+                desc="Displays GPU passthrough configuration and status"
+                ;;
+            omarchy-gpu-passthrough-utils)
+                desc="Utility functions for GPU passthrough management"
+                ;;
+            omarchy-gpu-passthrough)
+                desc="Main orchestrator for GPU passthrough operations"
+                ;;
+            omarchy-looking-glass-install)
+                desc="Installs Looking Glass for low-latency VM display sharing"
+                ;;
+            omarchy-looking-glass-launch)
+                desc="Launches Looking Glass client for VM display"
+                ;;
+            *)
+                desc="GPU passthrough related utility"
+                ;;
+        esac
 
-    echo "- **$filename** ($lines lines) - $desc" >> "$OUTPUT_DIR/README.md"
-  fi
+        echo "- **$filename** ($lines lines) - $desc" >> "$OUTPUT_DIR/README.md"
+    fi
 done
 
 cat >> "$OUTPUT_DIR/README.md" << EOF
@@ -231,7 +169,6 @@ EOF
 echo -e "${GREEN}📄 Generated README: $OUTPUT_DIR/README.md${NC}"
 echo
 
-# Create a quick grep helper
 cat > "$OUTPUT_DIR/search.sh" << 'EOF'
 #!/bin/bash
 # Quick search helper for PR review files
@@ -255,7 +192,6 @@ chmod +x "$OUTPUT_DIR/search.sh"
 echo -e "${GREEN}🔍 Search helper: $OUTPUT_DIR/search.sh${NC}"
 echo
 
-# Create an analysis script
 cat > "$OUTPUT_DIR/analyze.sh" << 'EOF'
 #!/bin/bash
 # Analyze GPU passthrough scripts
@@ -296,9 +232,3 @@ EOF
 chmod +x "$OUTPUT_DIR/analyze.sh"
 echo -e "${GREEN}📈 Analysis script: $OUTPUT_DIR/analyze.sh${NC}"
 echo
-
-echo -e "${BLUE}═══════════════════════════════════════════════════════════════${NC}"
-echo -e "${GREEN}✨ All done! Start reviewing with:${NC}"
-echo -e "   ${YELLOW}cd $OUTPUT_DIR && nvim README.md${NC}"
-echo -e "${BLUE}═══════════════════════════════════════════════════════════════${NC}"
-
