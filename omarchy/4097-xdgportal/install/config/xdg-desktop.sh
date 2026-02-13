@@ -1,0 +1,184 @@
+#!/usr/bin/env bash
+# /qompassai/Arch/omarchy/4097-xdgportal/install/config/xdg-desktop.sh
+# Qompass AI X Desktop Group (XDG) Omarchy Install Config Script
+# Copyright (C) 2026 Qompass AI, All rights reserved
+# ----------------------------------------
+XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+XDG_MENU_DIR="$XDG_CONFIG_HOME/menus"
+XDG_NINJA_DIR="$XDG_CONFIG_HOME/xdg-ninja"
+XDG_PORTAL_DIR="$XDG_CONFIG_HOME/xdg-desktop-portal"
+XDG_PORTAL_CONF="$PORTAL_DIR/portals.conf"
+mkdir -p "$XDG_PORTAL_DIR"
+cat > "$XDG_PORTAL_CONF" << 'EOF'
+[preferred]
+default=hyprland;gtk
+org.freedesktop.impl.portal.Access=gtk
+org.freedesktop.impl.portal.Account=gtk
+org.freedesktop.impl.portal.Bluetooth=gtk
+org.freedesktop.impl.portal.Camera=gtk
+org.freedesktop.impl.portal.Email=gtk
+org.freedesktop.impl.portal.FileChooser=gtk
+org.freedesktop.impl.portal.GlobalShortcuts=hyprland
+org.freedesktop.impl.portal.Inhibit=gtk
+org.freedesktop.impl.portal.Location=gtk
+org.freedesktop.impl.portal.Notification=gtk
+org.freedesktop.impl.portal.OpenURI=gtk
+org.freedesktop.impl.portal.PowerProfile=gtk
+org.freedesktop.impl.portal.Print=gtk
+org.freedesktop.impl.portal.ProxyResolver=gtk
+org.freedesktop.impl.portal.Screenshot=hyprland
+org.freedesktop.impl.portal.ScreenCast=hyprland
+org.freedesktop.impl.portal.RemoteDesktop=hyprland
+org.freedesktop.impl.portal.Settings=gtk
+org.freedesktop.impl.portal.Speech=gtk
+org.freedesktop.impl.portal.Trash=gtk
+EOF
+mkdir -p "$XDG_MENU_DIR"
+cat > "$XDG_MENU_DIR/applications.menu" << 'EOF'
+<!DOCTYPE Menu PUBLIC "-//freedesktop//DTD Menu 1.0//EN" "http://www.freedesktop.org/standards/menu-spec/1.0/menu.dtd">
+<Menu>
+  <Name>Applications</Name>
+  <Directory>Applications.directory</Directory>
+  <DefaultAppDirs/>
+  <DefaultDirectoryDirs/>
+  <DefaultMergeDirs/>
+  <Menu>
+    <Name>Archlinux</Name>
+    <Directory>Archlinux.directory</Directory>
+    <Include>
+      <Category>Archlinux</Category>
+    </Include>
+  </Menu>
+  <Menu>
+    <Name>Accessories</Name>
+    <Directory>Accessories.directory</Directory>
+    <Include>
+      <And>
+        <Category>Utility</Category>
+        <Not>
+          <Category>System</Category>
+        </Not>
+      </And>
+    </Include>
+  </Menu>
+  <Menu>
+    <Name>Accessibility</Name>
+    <Directory>Accessibility.directory</Directory>
+    <Include>
+      <And>
+        <Category>Accessibility</Category>
+        <Not>
+          <Category>Settings</Category>
+        </Not>
+      </And>
+    </Include>
+  </Menu>
+  <Menu>
+    <Name>Development</Name>
+    <Directory>Development.directory</Directory>
+    <Include>
+      <And>
+        <Category>Development</Category>
+      </And>
+      <Filename>emacs.desktop</Filename>
+    </Include>
+  </Menu>
+  <Menu>
+    <Name>Education</Name>
+    <Directory>Education.directory</Directory>
+    <Include>
+      <And>
+        <Category>Education</Category>
+      </And>
+    </Include>
+  </Menu>
+  <Menu>
+    <Name>Games</Name>
+    <Directory>Games.directory</Directory>
+    <Include>
+      <And>
+        <Category>Game</Category>
+      </And>
+    </Include>
+  </Menu>
+  <Menu>
+    <Name>Graphics</Name>
+    <Directory>Graphics.directory</Directory>
+    <Include>
+      <And>
+        <Category>Graphics</Category>
+      </And>
+    </Include>
+  </Menu>
+  <Menu>
+    <Name>Internet</Name>
+    <Directory>Internet.directory</Directory>
+    <Include>
+      <And>
+        <Category>Network</Category>
+      </And>
+    </Include>
+  </Menu>
+  <Menu>
+    <Name>Multimedia</Name>
+    <Directory>Multimedia.directory</Directory>
+    <Include>
+      <And>
+        <Category>AudioVideo</Category>
+      </And>
+    </Include>
+  </Menu>
+  <Menu>
+    <Name>Office</Name>
+    <Directory>Office.directory</Directory>
+    <Include>
+      <And>
+        <Category>Office</Category>
+      </And>
+    </Include>
+  </Menu>
+  <Menu>
+    <Name>Science</Name>
+    <Directory>Science.directory</Directory>
+    <Include>
+      <And>
+        <Or>
+          <Category>Astronomy</Category>
+          <Category>Biology</Category>
+          <Category>Chemistry</Category>
+          <Category>Geology</Category>
+          <Category>MedicalSoftware</Category>
+          <Category>Physics</Category>
+          <Category>Math</Category>
+          <Category>Science</Category>
+        </Or>
+        <Not><Category>Education</Category></Not>
+      </And>
+    </Include>
+  </Menu>
+  <Menu>
+    <Name>System</Name>
+    <Directory>System-Tools.directory</Directory>
+    <Include>
+      <And>
+        <Category>System</Category>
+        <Not><Category>Settings</Category></Not>
+      </And>
+    </Include>
+  </Menu>
+  <Menu>
+    <Name>Other</Name>
+    <Directory>Other.directory</Directory>
+    <OnlyUnallocated/>
+    <Include>
+      <And>
+        <Category>Application</Category>
+        <Not><Category>Core</Category></Not>
+        <Not><Category>Settings</Category></Not>
+      </And>
+    </Include>
+  </Menu>
+</Menu>
+EOF
+chmod 644 "$MENU_DIR/applications.menu"
+mkdir -p "$XDG_NINJA_DIR"
