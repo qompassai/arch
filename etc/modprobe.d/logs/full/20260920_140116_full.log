@@ -1,0 +1,50 @@
+[14:01:16.605] [INFO] GOATd Kernel logging initialized
+[14:01:16.636] [INFO] Full LLVM toolchain verification: PASSED
+[14:01:16.636] [INFO] [AppController] Initializing AppController
+[14:01:16.636] [INFO] [AppController] Settings loaded successfully
+[14:01:16.636] [INFO] [AppController] All modules initialized (system, kernel_manager, audit)
+[14:01:16.637] [INFO] [AppController] AppController ready for production
+[14:01:16.637] [INFO] [AppController] INIT: audit_on_startup not set, skipping initial deep audit
+[14:01:17.786] [INFO] perform;
+[14:01:17.786] [INFO] write_command; command=Auth(Some(External), Some([49, 48, 48, 48]))
+[14:01:17.786] [TRACE] -- write_command;
+[14:01:17.786] [INFO] read_command;
+[14:01:17.786] [TRACE] -- read_command;
+[14:01:17.786] [INFO] write_command; command=NegotiateUnixFD
+[14:01:17.786] [TRACE] -- write_command;
+[14:01:17.786] [INFO] read_command;
+[14:01:17.786] [TRACE] -- read_command;
+[14:01:17.786] [INFO] write_command; command=Begin
+[14:01:17.786] [TRACE] -- write_command;
+[14:01:17.786] [TRACE] -- perform;
+[14:01:17.787] [INFO] socket reader;
+[14:01:17.792] [INFO] perform;
+[14:01:17.792] [INFO] write_command; command=Auth(Some(External), Some([49, 48, 48, 48]))
+[14:01:17.792] [TRACE] -- write_command;
+[14:01:17.792] [INFO] read_command;
+[14:01:17.792] [TRACE] -- read_command;
+[14:01:17.792] [INFO] write_command; command=NegotiateUnixFD
+[14:01:17.792] [TRACE] -- write_command;
+[14:01:17.792] [INFO] read_command;
+[14:01:17.792] [TRACE] -- read_command;
+[14:01:17.792] [INFO] write_command; command=Begin
+[14:01:17.792] [TRACE] -- write_command;
+[14:01:17.792] [TRACE] -- perform;
+[14:01:17.792] [INFO] socket reader;
+[14:01:17.792] [INFO] start_object_server; started_event=None
+[14:01:17.792] [TRACE] -> start_object_server;
+[14:01:17.792] [INFO] {}; obj_server_task_name="ObjectServer task"
+[14:01:17.792] [TRACE] <- start_object_server;
+[14:01:17.792] [TRACE] -- start_object_server;
+[14:01:17.792] [TRACE] -> {};
+[14:01:17.793] [TRACE] <- {};
+[14:01:17.793] [TRACE] -- socket reader;
+[14:01:17.794] [TRACE] -> {};
+[14:01:17.794] [TRACE] <- {};
+[14:01:17.794] [INFO] dispatch_message; msg=Msg { type: MethodCall, sender: UniqueName(Str(Borrowed(":1.2"))), path: ObjectPath("/org/a11y/atspi/accessible/root"), iface: InterfaceName(Str(Borrowed("org.freedesktop.DBus.Properties"))), member: MemberName(Str(Borrowed("Set"))), body: Signature("ssv") }
+[14:01:17.794] [INFO] dispatch_method_call; msg=Msg { type: MethodCall, sender: UniqueName(Str(Borrowed(":1.2"))), path: ObjectPath("/org/a11y/atspi/accessible/root"), iface: InterfaceName(Str(Borrowed("org.freedesktop.DBus.Properties"))), member: MemberName(Str(Borrowed("Set"))), body: Signature("ssv") }
+[14:01:17.796] [INFO] dispatch_method_call_try; msg=Msg { type: MethodCall, sender: UniqueName(Str(Borrowed(":1.2"))), path: ObjectPath("/org/a11y/atspi/accessible/root"), iface: InterfaceName(Str(Borrowed("org.freedesktop.DBus.Properties"))), member: MemberName(Str(Borrowed("Set"))), body: Signature("ssv") }
+[14:01:17.796] [TRACE] -- dispatch_method_call_try;
+[14:01:17.796] [TRACE] -- dispatch_method_call;
+[14:01:17.796] [TRACE] -- dispatch_message;
+[14:01:17.804] [INFO] [SCXManager] SCX environment ready
